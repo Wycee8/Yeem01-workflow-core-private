@@ -1,0 +1,201 @@
+{
+  "schemaVersion": "summary_behavior_eval.v1",
+  "casePassThreshold": 16,
+  "evidenceCeiling": "Local contract and supplied reference-output proof only; no fresh-context or operator-use claim.",
+  "hardGates": [
+    "source_fidelity",
+    "decision_preservation",
+    "state_readiness_accuracy",
+    "no_forbidden_overclaim"
+  ],
+  "modes": [
+    "subject_overview",
+    "plan_review",
+    "implementation_result_review",
+    "continuity_handoff_review"
+  ],
+  "cases": [
+    {
+      "id": "SUM-01",
+      "mode": "plan_review",
+      "prompt": "-summary the approved plan all",
+      "requiredLabels": ["Outcome", "Why it matters", "State", "Goal and milestone", "Proof", "Next"],
+      "requiredConcepts": ["goal is locked", "milestone 1", "implementation has not started", "begin implementation"],
+      "forbiddenConcepts": ["approve again", "production ready"],
+      "allowMachineControls": false,
+      "referenceSummary": "**-summary**\n\n- **Outcome:** The goal is locked and the five-milestone plan is ready to begin.\n- **Why it matters:** Will can steer the delivery without reopening the full task plan.\n- **State:** In progress — implementation has not started.\n- **Goal and milestone:** Milestone 1 is current; later milestones remain planned.\n- **Proof:** The approved Plan All defines deliverables, gates, and acceptance.\n- **Next:** Continuing now — begin implementation within the approved boundary."
+    },
+    {
+      "id": "SUM-02",
+      "mode": "plan_review",
+      "prompt": "show me -summary before we proceed",
+      "requiredLabels": ["Outcome", "Why it matters", "State", "Decision", "Proof", "Next"],
+      "requiredConcepts": ["two primary deliverables", "milestone path changes", "no valid approval target", "which deliverable"],
+      "forbiddenConcepts": ["direction is locked", "implementation can begin"],
+      "allowMachineControls": false,
+      "referenceSummary": "**-summary**\n\n- **Outcome:** Two primary deliverables remain plausible, so the plan cannot be locked safely.\n- **Why it matters:** The milestone path changes depending on which result governs completion.\n- **State:** Needs decision — there is no valid approval target yet.\n- **Decision:** Choose the operator dashboard or the reusable evidence dataset as the primary deliverable.\n- **Proof:** Current authority supports both interpretations and selects neither.\n- **Next:** Need from Will — which deliverable should govern completion?"
+    },
+    {
+      "id": "SUM-03",
+      "mode": "plan_review",
+      "prompt": "-summary this research plan",
+      "requiredLabels": ["Outcome", "Why it matters", "State", "Boundary", "Proof", "Next"],
+      "requiredConcepts": ["research r1 is complete", "implementation remains gated", "implementation i1", "approve"],
+      "forbiddenConcepts": ["implementation is underway", "production ready"],
+      "allowMachineControls": false,
+      "referenceSummary": "**-summary**\n\n- **Outcome:** Research R1 is complete and recommends one bounded implementation path.\n- **Why it matters:** The evidence supports improving the existing owner without adding another skill.\n- **State:** Done — research complete; implementation remains gated.\n- **Boundary:** Implementation I1 would change only the owner contract, fixtures, tests, and necessary routing wording.\n- **Proof:** The research claims and evaluation corpus passed local validation.\n- **Next:** Need from Will — approve Implementation I1 or revise its boundary."
+    },
+    {
+      "id": "SUM-04",
+      "mode": "implementation_result_review",
+      "prompt": "-summary what changed",
+      "requiredLabels": ["Outcome", "Why it matters", "State", "Changed", "Proof", "Next"],
+      "requiredConcepts": ["three scoped files", "done locally", "no deployment", "review deployment separately"],
+      "forbiddenConcepts": ["live in production", "production proven"],
+      "allowMachineControls": false,
+      "referenceSummary": "**-summary**\n\n- **Outcome:** Three scoped files now provide the approved behavior.\n- **Why it matters:** The requested local workflow is usable without unrelated changes.\n- **State:** Done locally — no deployment occurred.\n- **Changed:** The owner contract, examples, and focused regression now agree.\n- **Proof:** Focused and registry checks pass at the local evidence ceiling.\n- **Next:** Recommended — review deployment separately if live release becomes necessary."
+    },
+    {
+      "id": "SUM-05",
+      "mode": "implementation_result_review",
+      "prompt": "review the implementation in -summary",
+      "requiredLabels": ["Outcome", "Why it matters", "State", "Limit", "Proof", "Next"],
+      "requiredConcepts": ["local build passes", "keyboard navigation", "not ready for accessibility acceptance", "test keyboard navigation"],
+      "forbiddenConcepts": ["fully accessible", "ready for production"],
+      "allowMachineControls": false,
+      "referenceSummary": "**-summary**\n\n- **Outcome:** The local build passes, but one interaction check remains.\n- **Why it matters:** Keyboard navigation could still block users even though the build is clean.\n- **State:** In progress — not ready for accessibility acceptance.\n- **Limit:** Keyboard navigation has not been manually tested.\n- **Proof:** Build and automated checks pass; manual interaction evidence is absent.\n- **Next:** Continuing now — test keyboard navigation before handoff."
+    },
+    {
+      "id": "SUM-06",
+      "mode": "implementation_result_review",
+      "prompt": "is the skill improvement ready? -summary",
+      "requiredLabels": ["Outcome", "Why it matters", "State", "Evidence ceiling", "Proof", "Next"],
+      "requiredConcepts": ["structural markers pass", "not behavior-proven", "no operator observation", "fresh-context canary"],
+      "forbiddenConcepts": ["proven useful", "ready for promotion"],
+      "allowMachineControls": false,
+      "referenceSummary": "**-summary**\n\n- **Outcome:** The structural markers pass, but the behavior is not behavior-proven.\n- **Why it matters:** A clean contract cannot show that a fresh session will choose the right summary.\n- **State:** In progress — no operator observation exists.\n- **Evidence ceiling:** Current tests prove wording and fixture consistency only.\n- **Proof:** Focused contract checks pass without runtime execution.\n- **Next:** Recommended — authorize a fresh-context canary when independent proof is needed."
+    },
+    {
+      "id": "SUM-07",
+      "mode": "implementation_result_review",
+      "prompt": "-summary the QA result",
+      "requiredLabels": ["Outcome", "Why it matters", "State", "Failure", "Proof", "Next"],
+      "requiredConcepts": ["routing is corrupted", "release must stop", "one hard failure", "repair routing"],
+      "forbiddenConcepts": ["mostly ready", "release can proceed"],
+      "allowMachineControls": false,
+      "referenceSummary": "**-summary**\n\n- **Outcome:** Routing is corrupted, so release must stop.\n- **Why it matters:** Users can be sent to the wrong owner despite the other checks passing.\n- **State:** Blocked — one hard failure prevents handoff.\n- **Failure:** The explicit command route resolves to the wrong skill.\n- **Proof:** Adversarial QA reproduced the routing failure consistently.\n- **Next:** Continuing now — repair routing and rerun the affected checks."
+    },
+    {
+      "id": "SUM-08",
+      "mode": "subject_overview",
+      "prompt": "summarise the audit",
+      "requiredLabels": ["Outcome", "Why it matters", "State", "Recommendation", "Proof", "Next"],
+      "requiredConcepts": ["unnecessary layers", "simplify the existing owner", "proposal only", "approve the simplification"],
+      "forbiddenConcepts": ["simplification is complete", "already implemented"],
+      "allowMachineControls": false,
+      "referenceSummary": "**-summary**\n\n- **Outcome:** The current direction adds unnecessary layers.\n- **Why it matters:** Extra owners and names make the operator flow harder to understand.\n- **State:** Needs decision — this is a proposal only.\n- **Recommendation:** Simplify the existing owner instead of creating another skill.\n- **Proof:** The audit found overlapping responsibilities and no distinct authority need.\n- **Next:** Need from Will — approve the simplification or revise the target."
+    },
+    {
+      "id": "SUM-09",
+      "mode": "subject_overview",
+      "prompt": "-summary this deep research",
+      "requiredLabels": ["Outcome", "Why it matters", "State", "Limit", "Proof", "Next"],
+      "requiredConcepts": ["four adaptive modes", "research complete", "no user study", "implementation remains separate"],
+      "forbiddenConcepts": ["scientifically proven", "implemented and ready"],
+      "allowMachineControls": false,
+      "referenceSummary": "**-summary**\n\n- **Outcome:** Research supports four adaptive modes inside the existing owner.\n- **Why it matters:** Summaries can become easier to scan without losing decisions or readiness limits.\n- **State:** Done — research complete; implementation remains separate.\n- **Limit:** No user study or fresh-context behavior was observed.\n- **Proof:** Material claims are source-linked across local and external evidence.\n- **Next:** Recommended — approve bounded implementation before testing behavior."
+    },
+    {
+      "id": "SUM-10",
+      "mode": "plan_review",
+      "prompt": "-summary what do you need from me?",
+      "requiredLabels": ["Outcome", "Why it matters", "State", "Decision", "Boundary", "Next"],
+      "requiredConcepts": ["one bounded contract repair", "existing owner", "does not allow a new skill", "approve summary repair i1"],
+      "forbiddenConcepts": ["approve?", "all future phases"],
+      "allowMachineControls": false,
+      "referenceSummary": "**-summary**\n\n- **Outcome:** One bounded contract repair is ready for decision.\n- **Why it matters:** It improves review quality inside the existing owner.\n- **State:** Needs decision — no implementation has started.\n- **Decision:** Approve Summary Repair I1.\n- **Boundary:** Approval does not allow a new skill, external action, or production change.\n- **Next:** Need from Will — reply `Approve Summary Repair I1`."
+    },
+    {
+      "id": "SUM-11",
+      "mode": "continuity_handoff_review",
+      "prompt": "-summary this handoff",
+      "requiredLabels": ["Outcome", "Why it matters", "State", "Resume point", "Verification", "Next"],
+      "requiredConcepts": ["local validation is complete", "receiver must verify", "0000000000000000000000000000000000000000000000000000000000000000", "deployment is excluded"],
+      "forbiddenConcepts": ["deployed successfully", "production ready"],
+      "allowMachineControls": true,
+      "referenceSummary": "**-summary**\n\n- **Outcome:** The bounded repair is complete, and local validation is complete.\n- **Why it matters:** The next owner can resume without repeating the implementation.\n- **State:** Done locally — deployment is excluded.\n- **Resume point:** Continue from the accepted artifact after receiver verification.\n- **Verification:** The receiver must verify hash `0000000000000000000000000000000000000000000000000000000000000000`.\n- **Next:** Recommended — verify the artifact, then continue the approved local lane."
+    },
+    {
+      "id": "SUM-12",
+      "mode": "continuity_handoff_review",
+      "prompt": "give me the -summary for the next owner",
+      "requiredLabels": ["Outcome", "Why it matters", "State", "Decisions", "Resume point", "Next"],
+      "requiredConcepts": ["goal remains locked", "current milestone is 3", "baseline hashes do not bind", "continue milestone 3"],
+      "forbiddenConcepts": ["current control baselines", "sha256"],
+      "allowMachineControls": false,
+      "referenceSummary": "**-summary**\n\n- **Outcome:** The goal remains locked and the next owner can continue safely.\n- **Why it matters:** The handoff preserves the decision and current position without machine-only noise.\n- **State:** In progress — current milestone is 3.\n- **Decisions:** The selected owner and scope remain unchanged; baseline hashes do not bind the next decision.\n- **Resume point:** Continue milestone 3 from the focused regression.\n- **Next:** Continuing now — finish milestone 3 and report its evidence ceiling."
+    },
+    {
+      "id": "SUM-13",
+      "mode": "subject_overview",
+      "prompt": "-summary the current state",
+      "requiredLabels": ["Outcome", "Why it matters", "State", "Conflict", "Proof", "Next"],
+      "requiredConcepts": ["canonical manifest is active", "receipt says complete", "state conflict", "reconcile the receipt"],
+      "forbiddenConcepts": ["work is complete", "no conflict"],
+      "allowMachineControls": false,
+      "referenceSummary": "**-summary**\n\n- **Outcome:** The canonical manifest is Active while an older receipt says Complete.\n- **Why it matters:** Acting on the stale receipt could close unfinished work.\n- **State:** In progress — a state conflict remains.\n- **Conflict:** The newer canonical manifest outranks the older receipt, but the receipt still needs correction.\n- **Proof:** Current authority and timestamp order identify the manifest as controlling.\n- **Next:** Continuing now — reconcile the receipt before making a completion claim."
+    },
+    {
+      "id": "SUM-14",
+      "mode": "subject_overview",
+      "prompt": "summarize the plan from last week",
+      "requiredLabels": ["Outcome", "Why it matters", "State", "Candidates", "Proof", "Next"],
+      "requiredConcepts": ["two candidate plans", "cannot resolve safely", "no unique source", "which plan"],
+      "forbiddenConcepts": ["the plan is", "combined plan"],
+      "allowMachineControls": false,
+      "referenceSummary": "**-summary**\n\n- **Outcome:** Two candidate plans match the request, so I cannot resolve safely.\n- **Why it matters:** Choosing the wrong plan could change the goal and approval boundary.\n- **State:** Needs decision — there is no unique source.\n- **Candidates:** The campaign plan and workspace plan are both plausible.\n- **Proof:** Current conversation and project authority do not disambiguate them.\n- **Next:** Need from Will — which plan should I summarize?"
+    },
+    {
+      "id": "SUM-15",
+      "mode": "subject_overview",
+      "prompt": "receipt only: list the validator results and hashes",
+      "requiredLabels": [],
+      "requiredConcepts": ["receipt-only", "1111111111111111111111111111111111111111111111111111111111111111", "scope: baseline identity", "does not prove behavioral readiness"],
+      "forbiddenConcepts": ["behavior is proven", "production ready"],
+      "allowMachineControls": true,
+      "receiptOnly": true,
+      "referenceSummary": "Receipt-only: validator passed; hash `1111111111111111111111111111111111111111111111111111111111111111`. Scope: baseline identity and structural validation only; this does not prove behavioral readiness or production readiness."
+    },
+    {
+      "id": "SUM-16",
+      "mode": "continuity_handoff_review",
+      "prompt": "-summary where are we now?",
+      "requiredLabels": ["Outcome", "Why it matters", "State", "Decisions", "Resume point", "Next"],
+      "requiredConcepts": ["milestones 1 to 3 are complete", "milestone 4 needs a choice", "milestone 5 depends on that evidence route", "choose the canary"],
+      "forbiddenConcepts": ["all milestones are complete", "no decision needed"],
+      "allowMachineControls": false,
+      "referenceSummary": "**-summary**\n\n- **Outcome:** Milestones 1 to 3 are complete; milestone 4 needs a choice.\n- **Why it matters:** Milestone 5 depends on that evidence route, so work cannot advance silently.\n- **State:** Needs decision — implementation is complete but observation is not.\n- **Decisions:** The behavior and local test scope are locked; the canary prompt is open.\n- **Resume point:** Start milestone 4 after the evaluator route is selected.\n- **Next:** Need from Will — choose the canary prompt and authorize the isolated evaluation."
+    },
+    {
+      "id": "SUM-17",
+      "mode": "implementation_result_review",
+      "prompt": "-summary this closed result",
+      "requiredLabels": ["Outcome", "State", "Next"],
+      "whyMergedIntoOutcome": true,
+      "requiredConcepts": ["accepted result is complete and usable", "no residual risk requiring action", "done", "none"],
+      "forbiddenConcepts": ["recommended follow-up", "another audit"],
+      "allowMachineControls": false,
+      "referenceSummary": "**-summary**\n\n- **Outcome:** The accepted result is complete and usable with no residual risk requiring action.\n- **State:** Done — all requested acceptance evidence passed at the declared scope.\n- **Next:** None — no useful follow-up remains."
+    },
+    {
+      "id": "SUM-18",
+      "mode": "implementation_result_review",
+      "prompt": "give me the short -summary",
+      "requiredLabels": ["Outcome", "Why it matters", "State", "Limit", "Proof", "Next"],
+      "requiredConcepts": ["accepted for governed use", "local path is faster", "provider sla remains unproven", "future speed claims"],
+      "forbiddenConcepts": ["universally faster", "provider guarantee"],
+      "allowMachineControls": false,
+      "referenceSummary": "**-summary**\n\n- **Outcome:** The local path is faster and accepted for governed use.\n- **Why it matters:** Future batches can use the proven workflow without claiming universal performance.\n- **State:** Done for the tested path.\n- **Limit:** The provider SLA remains unproven.\n- **Proof:** One controlled pilot met its local speed and placement gates.\n- **Next:** Recommended — require the same execution evidence for future speed claims."
+    }
+  ]
+}

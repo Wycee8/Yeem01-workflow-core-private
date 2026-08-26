@@ -1,0 +1,20 @@
+{
+  "interface": {
+    "displayName": "Will Private"
+  },
+  "name": "will-private",
+  "plugins": [
+    {
+      "category": "Productivity",
+      "name": "will-workflow-core",
+      "policy": {
+        "authentication": "ON_INSTALL",
+        "installation": "AVAILABLE"
+      },
+      "source": {
+        "path": "./plugins/will-workflow-core",
+        "source": "local"
+      }
+    }
+  ]
+}

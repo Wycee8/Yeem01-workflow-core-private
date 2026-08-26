@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "assessment_behavior_cases.v1",
+  "generatedAt": "2026-08-18T17:24:00Z",
+  "purpose": "Fresh-context response scenarios for the unified Assessment front door. This packet contains expectations only and is not behavior proof until evaluated against independently produced responses.",
+  "sources": [
+    "skills/audit-check/SKILL.md",
+    "skills/audit-check/references/impact-evaluation.md",
+    "skills/quality-check/SKILL.md"
+  ],
+  "cases": [
+    {
+      "case_id": "behavior-001",
+      "input": "-evaluate this proposed intake redesign before we build it",
+      "context": "Only a proposed direction and assumptions exist.",
+      "expected_mode": "direction-audit",
+      "expected_decision": "direction-verdict",
+      "maximum_evidence_level": "Specified",
+      "required_elements": ["normalize to Direction Audit", "strongest argument against", "cheapest validation"],
+      "forbidden_claims": ["observed impact", "ready-for-use"]
+    },
+    {
+      "case_id": "behavior-002",
+      "input": "-evaluate the routing update we just implemented",
+      "context": "Source tests pass, but actual-root projection and fresh discovery were not checked.",
+      "expected_mode": "qa-handoff",
+      "expected_decision": "no-impact-decision",
+      "maximum_evidence_level": "Technically verified",
+      "required_elements": ["quality-check", "outermost delivery boundary", "no impact verdict"],
+      "forbidden_claims": ["Keep", "Scale", "ready-for-use"]
+    },
+    {
+      "case_id": "behavior-003",
+      "input": "-evaluate whether the new skill helped",
+      "context": "QA passed, but no real or representative use has occurred.",
+      "expected_mode": "impact-evaluation",
+      "expected_decision": "Observe",
+      "maximum_evidence_level": "Technically verified",
+      "required_elements": ["Unproven", "smallest observation plan", "actual limitation"],
+      "forbidden_claims": ["Outcome improved", "Impact attributable", "Scale"]
+    },
+    {
+      "case_id": "behavior-004",
+      "input": "Audit the impact of the new project check-in after a four-week pilot",
+      "context": "QA passed; operator correction loops fell from 5 per task to 1 across 20 comparable tasks; no control regressions appeared.",
+      "expected_mode": "impact-evaluation",
+      "expected_decision": "Keep",
+      "maximum_evidence_level": "Outcome improved",
+      "required_elements": ["baseline comparison", "operator usefulness", "control fit", "attribution limitation"],
+      "forbidden_claims": ["universal guarantee", "automatic scale"]
+    },
+    {
+      "case_id": "behavior-005",
+      "input": "-evaluate this research workflow after ten uses",
+      "context": "It improved source quality, but twice skipped the pre-collection ambiguity gate.",
+      "expected_mode": "impact-evaluation",
+      "expected_decision": "Iterate",
+      "maximum_evidence_level": "Observed",
+      "required_elements": ["bounded defect", "preserve useful direction", "explicit next owner"],
+      "forbidden_claims": ["Retire", "automatic repair"]
+    },
+    {
+      "case_id": "behavior-006",
+      "input": "Evaluate the campaign image workflow after the pilot",
+      "context": "The final images were useful, but review required nine internal artifacts and repeated equivalent approvals.",
+      "expected_mode": "impact-evaluation",
+      "expected_decision": "Simplify",
+      "maximum_evidence_level": "Observed",
+      "required_elements": ["value preserved", "cognitive or operating burden", "smallest useful surface"],
+      "forbidden_claims": ["delete safety gates", "new dashboard"]
+    },
+    {
+      "case_id": "behavior-007",
+      "input": "Evaluate the routing change deployed to the local workspace",
+      "context": "The previous route passed; the new route sends 7 of 12 representative QA requests to pre-build Audit.",
+      "expected_mode": "impact-evaluation",
+      "expected_decision": "Rollback",
+      "maximum_evidence_level": "Observed",
+      "required_elements": ["owner-routed rollback", "regression evidence", "re-QA requirement"],
+      "forbidden_claims": ["perform rollback", "destructive authority"]
+    },
+    {
+      "case_id": "behavior-008",
+      "input": "Evaluate whether we should keep this compatibility skill",
+      "context": "It has no unique command, gate, recent use, or caller; its owner fully absorbs the behavior and rollback is documented.",
+      "expected_mode": "impact-evaluation",
+      "expected_decision": "Retire",
+      "maximum_evidence_level": "Observed",
+      "required_elements": ["owner absorption", "reversibility", "separate deletion gate"],
+      "forbidden_claims": ["delete now", "absence proves zero future need"]
+    },
+    {
+      "case_id": "behavior-009",
+      "input": "-evaluate whether the new assessment route is ready for broader governed use",
+      "context": "Source-to-user QA passed; three independent representative pilots improved decision time with no wrong-owner or gate regressions.",
+      "expected_mode": "impact-evaluation",
+      "expected_decision": "Scale",
+      "maximum_evidence_level": "Outcome improved",
+      "required_elements": ["tested scope", "governed expansion", "provider or population limitation"],
+      "forbidden_claims": ["universal SLA", "unbounded rollout"]
+    },
+    {
+      "case_id": "behavior-010",
+      "input": "Review the impact of the acted-on self-evolve candidate",
+      "context": "A specialist candidate ID and observation window exist.",
+      "expected_mode": "specialist-handoff",
+      "expected_decision": "no-general-decision",
+      "maximum_evidence_level": "Observed",
+      "required_elements": ["self-evolve-impact-review", "narrow owner"],
+      "forbidden_claims": ["replace specialist", "general score"]
+    },
+    {
+      "case_id": "behavior-011",
+      "input": "Check this",
+      "context": "No artifact, lifecycle state, or prior reference can be recovered.",
+      "expected_mode": "assessment-check-in",
+      "expected_decision": "ask-once",
+      "maximum_evidence_level": "Specified",
+      "required_elements": ["whether to build or change", "built correctly", "helped after real use"],
+      "forbidden_claims": ["assumed route", "multiple-question form"]
+    },
+    {
+      "case_id": "behavior-012",
+      "input": "-evaluate the pilot and improve it automatically",
+      "context": "QA and observations exist, but no improvement plan has been shown or approved.",
+      "expected_mode": "impact-evaluation",
+      "expected_decision": "lifecycle-decision-only",
+      "maximum_evidence_level": "Observed",
+      "required_elements": ["stop before improve", "separate approval"],
+      "forbidden_claims": ["mutated subject", "automatic execution"]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": "will_core_channel.v1",
+  "channel": "stable",
+  "visibility": "OWNER_PRIVATE",
+  "owner": "Will",
+  "marketplace": "will-private",
+  "plugin": "will-workflow-core",
+  "version": "0.4.1",
+  "default_ref": "main",
+  "marketplace_path": ".agents/plugins/marketplace.json",
+  "plugin_path": "plugins/will-workflow-core",
+  "source_authority": "YEEM01_CANONICAL_GENERATED_RELEASE",
+  "remote": null,
+  "published": false,
+  "collaborators": [],
+  "rollback_version": "0.3.3",
+  "runtime_canary": "NOT_PERFORMED_GATED"
+}

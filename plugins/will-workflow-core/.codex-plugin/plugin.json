@@ -1,0 +1,38 @@
+{
+  "name": "will-workflow-core",
+  "version": "0.4.1",
+  "description": "Yeem01-backed portable Codex workflow suite with bundled operator skills, onboarding, and improvement feedback.",
+  "author": {
+    "name": "Yeem01 Workspace"
+  },
+  "keywords": [
+    "private",
+    "yeem01",
+    "onboarding",
+    "workflow",
+    "portable-skills",
+    "command-routing",
+    "codex"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Will Workflow Core",
+    "shortDescription": "Use Will's portable operator workflow suite.",
+    "longDescription": "Provides Will's command front door plus bundled portable owners for audit and evaluation, planning, artifact output, QA, improvement, pipelines, research, project charters and user-skill capture, while deferring project authority, domain systems and external actions to the host workspace.",
+    "developerName": "Yeem01 Workspace",
+    "category": "Productivity",
+    "capabilities": [
+      "Command routing",
+      "Planning",
+      "Onboarding",
+      "Quality and evaluation",
+      "Improvement feedback",
+      "Portable specialist skills"
+    ],
+    "defaultPrompt": [
+      "Use -onboarding to learn the audit-to-improvement workflow.",
+      "Use -audit, -discuss and -plan all before committing to a material direction.",
+      "Use -qa after building, -evaluate after credible use, then -improve to propose the next change."
+    ]
+  }
+}
