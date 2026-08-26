@@ -1,6 +1,0 @@
-interface:
-  display_name: "Will Workflow Core"
-  short_description: "Onboard and route Will's shared workflow"
-  default_prompt: "Use $will-workflow-core to teach or apply Will's Yeem01-backed audit-to-improvement workflow, defer to available specialist and project owners, distinguish QA from impact evaluation, and turn redacted feedback into proposals rather than self-editing the core."
-policy:
-  allow_implicit_invocation: true

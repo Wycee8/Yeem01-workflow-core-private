@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate Will Workflow Core without external dependencies."""
+"""Validate Yeem01 Workflow Core without external dependencies."""
 
 from __future__ import annotations
 
@@ -13,7 +13,7 @@ from pathlib import Path
 
 SKILL_DIR = Path(__file__).resolve().parents[1]
 PLUGIN_DIR = SKILL_DIR.parents[1]
-VERSION = "0.4.1"
+VERSION = "0.5.0"
 
 COMMANDS = (
     "help",
@@ -36,13 +36,13 @@ URL_PATTERN = re.compile(r"https?://")
 
 CORE_EXPECTED_FILES = {
     ".codex-plugin/plugin.json",
-    "skills/will-workflow-core/SKILL.md",
-    "skills/will-workflow-core/agents/openai.yaml",
-    "skills/will-workflow-core/references/command-contract.md",
-    "skills/will-workflow-core/references/maintenance.md",
-    "skills/will-workflow-core/references/onboarding.md",
-    "skills/will-workflow-core/references/validation-cases.json",
-    "skills/will-workflow-core/scripts/validate_contract.py",
+    "skills/yeem01-workflow-core/SKILL.md",
+    "skills/yeem01-workflow-core/agents/openai.yaml",
+    "skills/yeem01-workflow-core/references/command-contract.md",
+    "skills/yeem01-workflow-core/references/maintenance.md",
+    "skills/yeem01-workflow-core/references/onboarding.md",
+    "skills/yeem01-workflow-core/references/validation-cases.json",
+    "skills/yeem01-workflow-core/scripts/validate_contract.py",
 }
 
 PORTABLE_SKILLS = {
@@ -119,7 +119,7 @@ def plugin_files() -> set[str]:
 def validate_manifest() -> None:
     manifest_path = PLUGIN_DIR / ".codex-plugin" / "plugin.json"
     manifest = json.loads(read_text(manifest_path))
-    require(manifest["name"] == "will-workflow-core", "manifest name mismatch")
+    require(manifest["name"] == "yeem01-workflow-core", "manifest name mismatch")
     require(manifest["version"] == VERSION, f"manifest must be version {VERSION}")
     require(re.fullmatch(r"\d+\.\d+\.\d+", manifest["version"]) is not None,
             "invalid semver")
@@ -135,7 +135,7 @@ def validate_manifest() -> None:
     defaults = manifest["interface"]["defaultPrompt"]
     require(isinstance(defaults, list) and 1 <= len(defaults) <= 3,
             "invalid default prompts")
-    require(manifest["interface"]["displayName"] == "Will Workflow Core",
+    require(manifest["interface"]["displayName"] == "Yeem01 Workflow Core",
             "display name must preserve the current core skill name")
     require(URL_PATTERN.search(manifest_path.read_text(encoding="utf-8")) is None,
             "manifest must not expose public URLs")
@@ -145,21 +145,21 @@ def validate_marketplace(marketplace_path: Path) -> None:
     marketplace = json.loads(read_text(marketplace_path))
     matches = [
         item for item in marketplace["plugins"]
-        if item.get("name") == "will-workflow-core"
+        if item.get("name") == "yeem01-workflow-core"
     ]
     require(len(matches) == 1, "marketplace must contain exactly one plugin entry")
     entry = matches[0]
     require(entry["source"] == {
         "source": "local",
-        "path": "./plugins/will-workflow-core",
+        "path": "./plugins/yeem01-workflow-core",
     }, "marketplace source mismatch")
     require(entry["policy"]["installation"] == "AVAILABLE",
             "installation policy mismatch")
     require(entry["policy"]["authentication"] == "ON_INSTALL",
             "auth policy mismatch")
-    require(marketplace["name"] == "will-private",
-            "marketplace must be will-private")
-    require(marketplace.get("interface", {}).get("displayName") == "Will Private",
+    require(marketplace["name"] == "yeem01-private",
+            "marketplace must be yeem01-private")
+    require(marketplace.get("interface", {}).get("displayName") == "Yeem01 Private",
             "marketplace display name mismatch")
 
 
@@ -185,7 +185,7 @@ def validate_skill() -> None:
         "production", "destructive",
     ):
         require(boundary in skill, f"missing host boundary: {boundary}")
-    require("$will-workflow-core" in yaml, "default prompt must name the skill")
+    require("$yeem01-workflow-core" in yaml, "default prompt must name the skill")
     require("allow_implicit_invocation: true" in yaml,
             "implicit invocation must be explicit")
     require("dependencies:" not in yaml,
@@ -233,7 +233,7 @@ def validate_skill() -> None:
                 f"onboarding lifecycle missing {lifecycle_mode}")
     for section in (
         "## Source And Output", "## Normal Update Flow",
-        "## Simple Feedback Contract", "## Future Central Distribution",
+        "## Simple Feedback Contract", "## Central Private Distribution",
         "## Release Rule",
     ):
         require(section in maintenance, f"maintenance missing section: {section}")
@@ -254,9 +254,9 @@ def validate_bundle_manifest(files: set[str]) -> int:
         return 1
 
     manifest = json.loads(read_text(manifest_path))
-    require(manifest["schema_version"] == "will_workflow_core_bundle.v1",
+    require(manifest["schema_version"] == "yeem01_workflow_core_bundle.v1",
             "bundle manifest schema mismatch")
-    require(manifest["plugin"] == "will-workflow-core", "bundle plugin mismatch")
+    require(manifest["plugin"] == "yeem01-workflow-core", "bundle plugin mismatch")
     require(manifest["version"] == VERSION, "bundle version mismatch")
     entries = manifest["skills"]
     names = {entry["name"] for entry in entries}
@@ -277,7 +277,7 @@ def validate_bundle_manifest(files: set[str]) -> int:
                 f"bundled skill tree hash mismatch: {name}")
     actual_dirs = {
         path.name for path in (PLUGIN_DIR / "skills").iterdir()
-        if path.is_dir() and path.name != "will-workflow-core"
+        if path.is_dir() and path.name != "yeem01-workflow-core"
     }
     require(actual_dirs == PORTABLE_SKILLS,
             f"packaged skill directories mismatch: {sorted(actual_dirs)}")
@@ -388,7 +388,7 @@ def main() -> int:
     except (AssertionError, KeyError, json.JSONDecodeError, UnicodeDecodeError) as exc:
         print(f"FAIL: {exc}", file=sys.stderr)
         return 1
-    print(f"PASS: will-workflow-core {VERSION} contract; {count} fixtures")
+    print(f"PASS: yeem01-workflow-core {VERSION} contract; {count} fixtures")
     print(f"PASS: portable suite with {skill_count} skills; onboarding, maintenance, privacy, inventory, and host boundaries")
     if args.marketplace is not None:
         print("PASS: private marketplace wiring")

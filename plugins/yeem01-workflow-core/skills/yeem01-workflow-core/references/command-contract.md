@@ -1,4 +1,4 @@
-# Will Workflow Core Command Contract
+# Yeem01 Workflow Core Command Contract
 
 Use this reference for combined commands, execution requests, QA/evaluation,
 improvement proposals, and ambiguous scope or authority.
@@ -23,7 +23,7 @@ core does not define or change the host's access rules.
 ## Host Capability Precedence
 
 The applicable bundled specialist or host canonical project owner owns the
-deliverable. `will-workflow-core` composes Will's command mode around that
+deliverable. `yeem01-workflow-core` composes Will's command mode around that
 route. Its fallback procedures apply only when no owner is available.
 
 Route, when available:
@@ -158,12 +158,12 @@ device authority.
 The editable command front door lives at:
 
 ```text
-starter_workspace/plugins/will-workflow-core
+starter_workspace/plugins/yeem01-workflow-core
 ```
 
 The released plugin is a generated projection of that front door plus the
 allowlisted canonical owners under `starter_workspace/skills/`. The packaged
-`BUNDLE_MANIFEST.json` names every included owner and source-tree hash. AT-Will
+`BUNDLE_MANIFEST.json` names every included owner and source-tree hash. A receiving device
 and later devices receive versioned packages; installed copies and old releases
 are never edited in place.
 

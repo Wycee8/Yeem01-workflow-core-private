@@ -1,7 +1,7 @@
 {
-  "front_door": "skills/will-workflow-core",
-  "plugin": "will-workflow-core",
-  "schema_version": "will_workflow_core_bundle.v1",
+  "front_door": "skills/yeem01-workflow-core",
+  "plugin": "yeem01-workflow-core",
+  "schema_version": "yeem01_workflow_core_bundle.v1",
   "skills": [
     {
       "file_count": 4,
@@ -111,5 +111,5 @@
     }
   ],
   "source_model": "YEEM01_CANONICAL_GENERATED_RELEASE",
-  "version": "0.4.1"
+  "version": "0.5.0"
 }

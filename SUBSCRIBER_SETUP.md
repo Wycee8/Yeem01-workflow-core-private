@@ -6,14 +6,17 @@ later makes a separate audience decision.
 
 ## First-time access
 
-After the private remote exists, add its Git URL as the marketplace source:
+Authenticate the device to Will's private GitHub repository, then run:
 
 ```sh
-codex plugin marketplace add <PRIVATE_GIT_REPOSITORY> --ref main
+codex plugin marketplace add git@github.com:Wycee8/Yeem01-workflow-core-private.git --ref main --json
 codex plugin marketplace list
-codex plugin add will-workflow-core@will-private --json
+codex plugin add yeem01-workflow-core@yeem01-private --json
 codex plugin list --json
 ```
+
+Confirm marketplace `yeem01-private`, plugin `yeem01-workflow-core`, and
+version `0.5.0` before opening a new task.
 
 Start a fresh task and enter:
 
@@ -24,12 +27,24 @@ Start a fresh task and enter:
 Then run the read-only canary in the current handoff packet before relying on
 the plugin for real work.
 
+## Rename Migration
+
+If `codex plugin list --json` still shows the former
+`will-workflow-core@will-private` installation, remove it only after the new
+plugin passes the canary:
+
+```sh
+codex plugin remove will-workflow-core@will-private --json
+```
+
+The old identifier is not updated in place.
+
 ## Refresh
 
 ```sh
-codex plugin marketplace upgrade will-private --json
-codex plugin list --marketplace will-private --available --json
-codex plugin add will-workflow-core@will-private --json
+codex plugin marketplace upgrade yeem01-private --json
+codex plugin list --marketplace yeem01-private --available --json
+codex plugin add yeem01-workflow-core@yeem01-private --json
 ```
 
 Start a fresh task after reinstalling. Marketplace refresh does not inherit
@@ -37,9 +52,9 @@ credentials, connectors, project authority, or another device's settings.
 
 ## Rollback
 
-If discovery or canary behavior fails, stop using the candidate and restore the
-previous verified version from the Yeem01 release handoff. Do not patch the
-installed copy.
+If discovery or canary behavior fails, remove the new plugin and restore the
+previous verified `will-workflow-core` `0.4.1` package from the Yeem01 release
+handoff. Do not patch an installed copy.
 
 ## Access boundary
 

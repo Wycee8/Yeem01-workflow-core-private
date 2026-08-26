@@ -1,9 +1,9 @@
 ---
-name: will-workflow-core
+name: yeem01-workflow-core
 description: Apply Will's Yeem01-backed Codex workflow when a request explicitly uses -help, -onboarding, -explain, -ask, -user, -audit, -discuss, -explore, -suggest, -research, -plan, -qa, -evaluate, -improve, proceed, proceed all, auto proceed, or Adam proceed. Use it to preserve familiar cross-device command semantics, compose modes, teach the audit-to-improvement lifecycle, and collect redacted improvement proposals. Do not trigger from incidental nouns, filenames, bare BM, or general questions; this skill supplies no project logic, connector, credential, tool, permission, access decision, or external-action authority.
 ---
 
-# Will Workflow Core
+# Yeem01 Workflow Core
 
 ## Purpose
 
@@ -306,7 +306,7 @@ Lead with the outcome. Use the smallest structure the mode needs. For material
 routing, a compact line is acceptable:
 
 ```text
-Usage: pattern=<request>, mode=<mode>, route=will-workflow-core -> <owner>
+Usage: pattern=<request>, mode=<mode>, route=yeem01-workflow-core -> <owner>
 ```
 
 Do not emit the route mechanically. End execution work with completed items,

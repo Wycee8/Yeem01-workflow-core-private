@@ -1,11 +1,11 @@
-# Will Workflow Core Onboarding
+# Yeem01 Workflow Core Onboarding
 
 Use this guide for `-onboarding`, a new user or device, or a request to explain
 the complete workflow.
 
 ## What It Is
 
-`will-workflow-core` is Will's command front door for consistent work with
+`yeem01-workflow-core` is Will's command front door for consistent work with
 Codex. The released plugin also carries the portable operator owners for
 audit/evaluation, planning, output defaults, QA, improvement, pipelines,
 research, charters, and user-first skill-change checks. An explicit token such
@@ -30,27 +30,27 @@ action authority. Those remain with the host workspace and its owner.
 The command front door is edited in the Yeem01 workspace at:
 
 ```text
-starter_workspace/plugins/will-workflow-core
+starter_workspace/plugins/yeem01-workflow-core
 ```
 
 The release builder adds allowlisted canonical skill directories from
 `starter_workspace/skills/` and records their exact inventories and hashes.
-AT-Will and later compatible devices receive versioned generated packages,
-not editable copies that drift independently.
+Will-owned compatible devices subscribe to a versioned generated private
+marketplace, not editable copies that drift independently.
 
 ## Getting Started
 
-The handoff package is a small local Codex marketplace. Setup is:
+The handoff source is a small private Git-backed Codex marketplace. Setup is:
 
-1. receive one versioned archive and checksum through the chosen private
-   transfer path;
-2. verify and extract it;
-3. add the extracted directory as a local marketplace;
-4. install `will-workflow-core@will-private`; and
-5. start a fresh task and enter `-onboarding`.
+1. authenticate the receiving device to the owner-private Git repository;
+2. add `Wycee8/Yeem01-workflow-core-private` as a marketplace
+   pinned to `main`;
+3. install `yeem01-workflow-core@yeem01-private`;
+4. start a fresh task and enter `-onboarding`; and
+5. run the read-only canary in the private-device handoff.
 
-The exact verified commands and rollback steps live in that release's
-`AT_WILL_HANDOFF.md`. Installing the package does not copy the full Yeem01
+The exact verified commands and rollback steps live in `SUBSCRIBER_SETUP.md`
+and that release's `PRIVATE_DEVICE_HANDOFF.md`. Installing the package does not copy the full Yeem01
 workspace, credentials, connectors, project data, domain systems, or another
 device's settings.
 

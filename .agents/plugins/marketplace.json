@@ -1,18 +1,18 @@
 {
   "interface": {
-    "displayName": "Will Private"
+    "displayName": "Yeem01 Private"
   },
-  "name": "will-private",
+  "name": "yeem01-private",
   "plugins": [
     {
       "category": "Productivity",
-      "name": "will-workflow-core",
+      "name": "yeem01-workflow-core",
       "policy": {
         "authentication": "ON_INSTALL",
         "installation": "AVAILABLE"
       },
       "source": {
-        "path": "./plugins/will-workflow-core",
+        "path": "./plugins/yeem01-workflow-core",
         "source": "local"
       }
     }

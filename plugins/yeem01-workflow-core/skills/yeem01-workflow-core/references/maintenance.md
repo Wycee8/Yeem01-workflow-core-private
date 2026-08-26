@@ -7,7 +7,7 @@ This pack has one editable source and many immutable generated releases.
 Canonical command-front-door source:
 
 ```text
-starter_workspace/plugins/will-workflow-core
+starter_workspace/plugins/yeem01-workflow-core
 ```
 
 Release control and builder:
@@ -20,7 +20,7 @@ workspace_optimisation/will_private_skill_distribution
 Generated local marketplace and releases:
 
 ```text
-private_distribution/will-private-marketplace
+private_distribution/yeem01-private-marketplace
 ```
 
 The allowlisted portable owners remain canonical under
@@ -67,16 +67,21 @@ Do not centralize raw transcripts, credentials, client data, sensitive personal
 information, or employee scoring. `-improve` produces a proposal; a maintainer
 owns the Yeem01 source change.
 
-## Future Central Distribution
+## Central Private Distribution
 
-The generated marketplace directory can later become a private Git-backed
-marketplace. A compatible device would add that private marketplace once and
-install or update the named plugin version. This improves access and updates
-without cloning the full Yeem01 workspace.
+The generated marketplace projection is published to the owner-private Git
+repository:
 
-The initial AT-Will handoff remains an offline, checksum-verified archive. A
-remote, push, collaborator setup, connector, or device install is outside this
-core and must be handled by the surrounding workspace process.
+```text
+Wycee8/Yeem01-workflow-core-private
+```
+
+A Will-owned device authenticates to that repository, adds it once as the
+`yeem01-private` marketplace, and explicitly installs or refreshes
+`yeem01-workflow-core`. The remote carries only the current generated channel;
+the full Yeem01 workspace, local release archives, credentials, client data and
+raw feedback remain excluded. Repository visibility and device credentials are
+host-owned controls, not behavior inside the skill.
 
 ## Release Rule
 
@@ -89,5 +94,6 @@ An immutable release is ready for handoff only when:
   allowlisted bundle;
 - candidate and archive checksums pass;
 - a previous accepted release remains available for rollback; and
-- transfer, install, runtime canary, external rollout, credentials, and push
-  remain unperformed unless separately in scope.
+- transfer, install, runtime canary, external rollout and credentials remain
+  unperformed unless separately in scope; and
+- channel publication occurs only to the verified owner-private remote.
