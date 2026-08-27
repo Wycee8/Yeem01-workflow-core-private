@@ -153,6 +153,11 @@ Every receiver/device receives a unique reference and receipts. It inherits no
 credentials, connectors, client access, project role, data scope, or previous
 device authority.
 
+Codex marketplace installation is the verified plugin route. Cursor and other
+Agent Skills hosts may use a generated file-layout adapter only when the host
+documents the selected discovery directory. A successful copy is adapter
+proof, not a claim that every provider or remote worker loaded the skills.
+
 ## Central Source And Release
 
 The editable command front door lives at:

@@ -1,5 +1,5 @@
 {
-  "schema_version": "3.0",
+  "schema_version": "3.1",
   "cases": [
     {"id":"activate_help","prompt":"-help for -qa","expect_tokens":["help","qa"],"expect":"guide_only"},
     {"id":"activate_onboarding","prompt":"-onboarding for a new operator","expect_tokens":["onboarding"],"expect":"load_compact_onboarding_guide_only"},
@@ -56,6 +56,11 @@
     {"id":"maintenance_explain_source","prompt":"-explain where the core source is maintained","expect_tokens":["explain"],"expect":"yeem01_source_generated_release_model"},
     {"id":"maintenance_simple_feedback","prompt":"-improve using a minimal redacted associate note","expect_tokens":["improve"],"expect":"simple_feedback_to_central_proposal"},
     {"id":"maintenance_no_device_edit","prompt":"-explain whether AT-Will should edit its installed skill","expect_tokens":["explain"],"expect":"edit_yeem01_source_not_device_copy"},
+    {"id":"maintenance_no_shared_json_key","prompt":"-explain whether I should send subscribers a shared JSON key","expect_tokens":["explain"],"expect":"identity_authentication_no_shared_secret"},
+    {"id":"maintenance_cursor_setup","prompt":"-explain how an authorized Cursor device uses the pack","expect_tokens":["explain"],"expect":"private_clone_agent_skills_adapter_fresh_session"},
+    {"id":"maintenance_provider_limit","prompt":"-explain whether the adapter proves every AI provider is supported","expect_tokens":["explain"],"expect":"layout_compatibility_not_universal_provider_claim"},
+    {"id":"maintenance_revocation_limit","prompt":"-explain what happens to an existing clone after repository access is removed","expect_tokens":["explain"],"expect":"future_fetch_blocked_retained_copy_requires_endpoint_offboarding"},
+    {"id":"maintenance_simple_install","prompt":"-onboarding give me the simplest secure install path","expect_tokens":["onboarding"],"expect":"provider_specific_identity_based_fast_start"},
 
     {"id":"abstain_audit_noun","prompt":"The audit log is stored in reports.","expect_tokens":[],"expect":"no_command_mode"},
     {"id":"abstain_plan_filename","prompt":"Open plan.png.","expect_tokens":[],"expect":"no_command_mode"},

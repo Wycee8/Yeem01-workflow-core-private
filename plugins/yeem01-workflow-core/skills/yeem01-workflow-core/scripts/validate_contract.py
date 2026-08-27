@@ -13,7 +13,7 @@ from pathlib import Path
 
 SKILL_DIR = Path(__file__).resolve().parents[1]
 PLUGIN_DIR = SKILL_DIR.parents[1]
-VERSION = "0.5.0"
+VERSION = "0.6.1"
 
 COMMANDS = (
     "help",
@@ -228,6 +228,12 @@ def validate_skill() -> None:
         "## First Safe Practice",
     ):
         require(section in onboarding, f"onboarding missing section: {section}")
+    require("USE_MANUAL.md" in onboarding and "SUBSCRIBER_SETUP.md" in onboarding,
+            "onboarding must route to subscriber documentation")
+    require("There is no shared JSON key" in onboarding,
+            "onboarding must reject shared subscriber credentials")
+    require("Cursor" in onboarding and "Agent Skills" in onboarding,
+            "onboarding must explain provider adapter boundaries")
     for lifecycle_mode in ("-audit", "-discuss", "-plan all", "-qa", "-evaluate", "-improve"):
         require(lifecycle_mode in onboarding,
                 f"onboarding lifecycle missing {lifecycle_mode}")
@@ -237,6 +243,10 @@ def validate_skill() -> None:
         "## Release Rule",
     ):
         require(section in maintenance, f"maintenance missing section: {section}")
+    require("individual GitHub" in maintenance and "No shared JSON credential" in maintenance,
+            "maintenance must define identity-based subscriber access")
+    require("provider-layout canaries" in maintenance,
+            "maintenance must require provider adapter validation")
     combined_core = "\n".join((skill, contract, onboarding, maintenance)).lower()
     for forbidden_phrase in (
         "approval gate", "approved user", "owner approves", "grant approval",
@@ -324,9 +334,9 @@ def validate_privacy_and_inventory() -> int:
 def validate_cases() -> int:
     cases_path = SKILL_DIR / "references" / "validation-cases.json"
     payload = json.loads(read_text(cases_path))
-    require(payload["schema_version"] == "3.0", "fixture schema must be 3.0")
+    require(payload["schema_version"] == "3.1", "fixture schema must be 3.1")
     cases = payload["cases"]
-    require(len(cases) >= 55, "insufficient validation coverage")
+    require(len(cases) >= 60, "insufficient validation coverage")
     ids = [case["id"] for case in cases]
     require(len(ids) == len(set(ids)), "duplicate validation case id")
     for case in cases:
@@ -351,6 +361,10 @@ def validate_cases() -> int:
         "privacy_no_employee_scoring": "refuse_employee_performance_scoring",
         "maintenance_explain_source": "yeem01_source_generated_release_model",
         "maintenance_no_device_edit": "edit_yeem01_source_not_device_copy",
+        "maintenance_no_shared_json_key": "identity_authentication_no_shared_secret",
+        "maintenance_cursor_setup": "private_clone_agent_skills_adapter_fresh_session",
+        "maintenance_provider_limit": "layout_compatibility_not_universal_provider_claim",
+        "maintenance_revocation_limit": "future_fetch_blocked_retained_copy_requires_endpoint_offboarding",
         "stop_core_access_decision": "guide_only_host_owns_access_decision",
     }
     by_id = {case["id"]: case["expect"] for case in cases}

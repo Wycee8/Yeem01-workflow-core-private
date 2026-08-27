@@ -42,8 +42,10 @@ copied intact.
 5. bump semantic versioning in `.codex-plugin/plugin.json`;
 6. run the contract, every bundled skill, and plugin validators;
 7. generate a new immutable release with the project builder;
-8. QA the cleanly extracted package; and
-9. distribute through the chosen private channel and run a fresh-task canary.
+8. generate and verify `README.md`, `USE_MANUAL.md`, `SUBSCRIBER_SETUP.md` and
+   the bounded Agent Skills adapter;
+9. QA the cleanly extracted package and its provider-layout canaries; and
+10. distribute through the chosen private channel and run a fresh-task canary.
 
 Use a patch version for corrections that preserve command behavior, a minor
 version for new commands or material workflow behavior, and a major version
@@ -76,9 +78,12 @@ repository:
 Wycee8/Yeem01-workflow-core-private
 ```
 
-A Will-owned device authenticates to that repository, adds it once as the
-`yeem01-private` marketplace, and explicitly installs or refreshes
-`yeem01-workflow-core`. The remote carries only the current generated channel;
+Each subscriber authenticates to that repository with an individual GitHub
+identity, per-device key, or separately managed least-privilege machine
+identity. No shared JSON credential belongs in the pack. Codex adds the
+`yeem01-private` marketplace and explicitly installs or refreshes
+`yeem01-workflow-core`; Cursor and documented Agent Skills hosts use the
+generated adapter and a fresh-session canary. The remote carries only the current generated channel;
 the full Yeem01 workspace, local release archives, credentials, client data and
 raw feedback remain excluded. Repository visibility and device credentials are
 host-owned controls, not behavior inside the skill.
@@ -90,6 +95,10 @@ An immutable release is ready for handoff only when:
 - the source version and release version match;
 - every declared Yeem01 source input exists and has a recorded SHA-256;
 - contract, skill, plugin, privacy, and inventory checks pass;
+- subscriber documentation contains all ten skill explanations and the
+  identity, revocation, update and rollback boundaries;
+- Codex marketplace wiring and isolated Cursor/generic Agent Skills adapter
+  canaries pass;
 - candidate, marketplace projection, and clean extraction match the generated
   allowlisted bundle;
 - candidate and archive checksums pass;

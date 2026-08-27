@@ -35,22 +35,29 @@ starter_workspace/plugins/yeem01-workflow-core
 
 The release builder adds allowlisted canonical skill directories from
 `starter_workspace/skills/` and records their exact inventories and hashes.
-Will-owned compatible devices subscribe to a versioned generated private
-marketplace, not editable copies that drift independently.
+Authorized compatible devices subscribe to one versioned generated private
+channel, not editable copies that drift independently. Codex uses the private
+marketplace; Cursor and compatible Agent Skills hosts use the same generated
+skill trees through the channel adapter and their documented discovery path.
 
 ## Getting Started
 
-The handoff source is a small private Git-backed Codex marketplace. Setup is:
+The handoff source is a small private Git-backed channel. Setup is:
 
 1. authenticate the receiving device to the owner-private Git repository;
-2. add `Wycee8/Yeem01-workflow-core-private` as a marketplace
-   pinned to `main`;
-3. install `yeem01-workflow-core@yeem01-private`;
+2. for Codex, add `Wycee8/Yeem01-workflow-core-private` as a marketplace pinned
+   to `main` and install `yeem01-workflow-core@yeem01-private`;
+3. for Cursor or a compatible Agent Skills host, clone the private channel and
+   run its bounded adapter against the provider's documented `skills`
+   directory;
 4. start a fresh task and enter `-onboarding`; and
 5. run the read-only canary in the private-device handoff.
 
-The exact verified commands and rollback steps live in `SUBSCRIBER_SETUP.md`
-and that release's `PRIVATE_DEVICE_HANDOFF.md`. Installing the package does not copy the full Yeem01
+The compact description lives in `README.md`, the complete command and skill
+guide lives in `USE_MANUAL.md`, and exact authentication, install, update and
+rollback steps live in `SUBSCRIBER_SETUP.md` and that release's
+`PRIVATE_DEVICE_HANDOFF.md`. There is no shared JSON key: repository access is
+granted to each subscriber identity outside the pack. Installing the package does not copy the full Yeem01
 workspace, credentials, connectors, project data, domain systems, or another
 device's settings.
 

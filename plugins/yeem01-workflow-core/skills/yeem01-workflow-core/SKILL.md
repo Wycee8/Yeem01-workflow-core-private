@@ -13,6 +13,11 @@ The released plugin keeps familiar workflow semantics available on another
 compatible device and includes a dependency-complete set of shared operator
 skills without copying the full Yeem01 workspace.
 
+Codex consumes the generated private marketplace. Cursor and another host may
+consume the same generated skill trees only through a documented Agent Skills
+directory and the channel's bounded adapter. File-layout compatibility does
+not prove that an untested provider discovers or follows the skills.
+
 The skill never grants a tool, connector, permission, project role, data
 source, device access, or authority inherited from another user or machine.
 Distribution and access decisions live outside this core.
@@ -24,7 +29,7 @@ Keep context compact. Load only what the request needs:
 - read `references/command-contract.md` for combined commands, `proceed`,
   `-qa`, `-evaluate`, `-improve`, or ambiguous scope/authority;
 - read `references/maintenance.md` when asked how the pack is sourced,
-  distributed, updated, or improved; and
+  subscribed to, distributed, updated, or improved; and
 - read `references/validation-cases.json` only when testing or changing the
   skill.
 
