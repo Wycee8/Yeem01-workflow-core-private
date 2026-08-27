@@ -1,4 +1,4 @@
-# Yeem01 Workflow Core Use Manual — `0.6.1`
+# Yeem01 Workflow Core Use Manual — `0.6.2`
 
 ## What The Pack Does
 

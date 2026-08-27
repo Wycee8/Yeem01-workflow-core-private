@@ -5,7 +5,7 @@ same core audit, discussion, planning, QA, evaluation, improvement, research,
 pipeline and project-context methods on another device without cloning the
 Yeem01 workspace.
 
-- Current stable version: `0.6.1`
+- Current stable version: `0.6.2`
 - Rollback: `0.5.0`
 - Marketplace: `yeem01-private`
 
@@ -78,7 +78,6 @@ Edit the canonical Yeem01 skill, add a regression case, bump the version, build
 and QA a new immutable release, then publish the generated channel. Never patch
 an installed copy or this generated projection directly.
 
-This channel is published only through the existing private owner-controlled
-repository. Subscriber invitations, membership and credential changes remain
-separate owner actions, and every new version still requires a fresh-session
-receiver canary.
+This version is published through Will's private, identity-controlled GitHub
+channel. Subscriber invitations and credential changes remain separate owner
+actions, and every new version still requires a fresh-session receiver canary.

@@ -9,14 +9,14 @@
   "plugin_path": "plugins/yeem01-workflow-core",
   "published": true,
   "published_ref": "main",
-  "published_tag": "v0.6.1",
+  "published_tag": "v0.6.2",
   "remote": "git@github.com:Wycee8/Yeem01-workflow-core-private.git",
   "rollback_plugin": "yeem01-workflow-core",
   "rollback_version": "0.5.0",
-  "runtime_canary": "READY_FOR_V0_6_1_RECEIVER_CANARY",
+  "runtime_canary": "READY_FOR_V0_6_2_RECEIVER_CANARY",
   "schema_version": "yeem01_workflow_core_channel.v2",
   "shared_secret_required": false,
   "source_authority": "YEEM01_CANONICAL_GENERATED_RELEASE",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "visibility": "PRIVATE_IDENTITY_CONTROLLED"
 }

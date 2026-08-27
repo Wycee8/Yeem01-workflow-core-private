@@ -13,7 +13,7 @@ from pathlib import Path
 
 SKILL_DIR = Path(__file__).resolve().parents[1]
 PLUGIN_DIR = SKILL_DIR.parents[1]
-VERSION = "0.6.1"
+VERSION = "0.6.2"
 
 COMMANDS = (
     "help",

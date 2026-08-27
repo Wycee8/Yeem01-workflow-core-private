@@ -1,6 +1,6 @@
 {
   "name": "yeem01-workflow-core",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Yeem01-backed portable workflow suite with bundled operator skills, onboarding, secure subscription guidance, and improvement feedback.",
   "author": {
     "name": "Yeem01 Workspace"
