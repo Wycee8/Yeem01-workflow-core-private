@@ -1,15 +1,15 @@
-# Yeem01 Workflow Core Use Manual — `0.6.2`
+# Yeem01 Workflow Core Use Manual — `0.7.0`
 
 ## What The Pack Does
 
-Yeem01 Workflow Core gives authorized devices a consistent command front door
-and the same ten portable workflow owners used for common Yeem01 operations. It
-helps a user decide, discuss, plan, execute a bounded lane, verify build quality,
-observe real use, evaluate impact, and propose the next improvement.
+Yeem01 Workflow Core gives a new device a consistent command front door and
+the same ten portable workflow owners used for common Yeem01 operations. It
+helps a user decide, discuss, plan, execute a bounded lane, verify build
+quality, observe real use, evaluate impact and propose the next improvement.
 
 It does not carry Yeem01's whole workspace. It provides no credentials,
 connectors, project role, client authority, publication right, provider spend,
-or permission to change an external system.
+device authorization or permission to change an external system.
 
 ## Included Skills
 
@@ -17,7 +17,7 @@ or permission to change an external system.
 
 **Job:** command front door, onboarding, composition and host boundaries.
 
-**Use it when:** Will uses an explicit workflow token, asks for onboarding, or combines discussion, planning, execution and assurance modes.
+**Use it when:** a user invokes an explicit workflow token, asks for onboarding, or combines discussion, planning, execution and assurance modes.
 
 **Boundary:** Preserves command semantics but supplies no project authority, credentials, connector access or external-action permission.
 
@@ -33,7 +33,7 @@ or permission to change an external system.
 
 **Job:** current-slice, milestone and full planning.
 
-**Use it when:** turning approved intent into -plan, -plan all or -plan full.
+**Use it when:** turning accepted intent into -plan, -plan all or -plan full.
 
 **Boundary:** Plans the work but does not execute it.
 
@@ -59,7 +59,7 @@ or permission to change an external system.
 
 **Use it when:** turning observed friction or evaluation findings into a ranked, bounded proposal.
 
-**Boundary:** Does not silently self-edit, accept or release a change.
+**Boundary:** Does not silently scan sessions, self-edit, accept or release a change.
 
 ### 7. `pipeline`
 
@@ -108,14 +108,14 @@ skill folders.
 | `-user` | Makes the intended user's job and constraints visible | Authorized context only |
 | `-audit` | Pressure-tests a direction before commitment | No implementation |
 | `-discuss` | Refines a working hypothesis together | Conversation-locked |
-| `-explore` | Maps plausible options, unknowns and cheap probes | No commitment by itself |
+| `-explore` | Maps options, unknowns and cheap probes | No commitment by itself |
 | `-suggest` | Recommends one route and its strongest challenge | Advice only |
 | `-research` | Resolves a named evidence gap | Evidence only |
 | `-plan` | Plans the current actionable slice | No execution |
 | `-plan all` | Plans the complete three-to-seven-milestone journey | No execution |
 | `-plan full` | Adds tasks, paths, validators, rollback and handoff | No execution |
 | `proceed` | Continues one visible bounded lane | Host rules still apply |
-| `proceed all` | Continues dependency-valid work in an approved plan | Never unlimited authority |
+| `proceed all` | Continues dependency-valid work in a selected plan | Never unlimited authority |
 | `-qa` | Checks whether completed work was built correctly | Post-build evidence |
 | `-evaluate` | Judges value after credible use | Post-use evidence |
 | `-improve` | Proposes the smallest evidence-backed change | No writes by default |
@@ -124,13 +124,13 @@ skill folders.
 
 Scenario: an associate proposes a shared campaign-brief workflow.
 
-1. Pressure-test the direction:
+1. Audit the direction before commitment:
 
    ```text
    -audit the shared campaign-brief workflow before we commit
    ```
 
-2. Refine and open the option space:
+2. Discuss and explore how people would use it:
 
    ```text
    -discuss and -explore how a strategist and associate would use it
@@ -148,7 +148,7 @@ Scenario: an associate proposes a shared campaign-brief workflow.
    proceed with milestone one only; stop before external writes
    ```
 
-5. Verify the build:
+5. Verify the completed build:
 
    ```text
    -qa the completed milestone against its acceptance checks
@@ -156,7 +156,7 @@ Scenario: an associate proposes a shared campaign-brief workflow.
 
 6. Use it and record only minimal redacted observations.
 
-7. Judge impact:
+7. Judge impact after credible use:
 
    ```text
    -evaluate the workflow using these redacted observations
@@ -169,7 +169,7 @@ Scenario: an associate proposes a shared campaign-brief workflow.
    ```
 
 9. A maintainer updates the canonical Yeem01 owner, adds a regression case,
-   releases a new version and reruns QA and a fresh-session canary.
+   builds a new version and reruns QA and a fresh-session canary.
 
 ## Audit, QA And Evaluation Are Different
 
@@ -184,27 +184,29 @@ observation plan, not an invented evaluation.
 
 ## Using The Pack By Provider
 
-- Codex: subscribe to the private marketplace and install the plugin. The
-  plugin exposes all ten skills together.
-- Cursor local: clone the private channel and run
-  `scripts/install_agent_skills.py --provider cursor`. Start a new chat.
-- Compatible Agent Skills host: use the adapter with an explicit directory
-  whose name is `skills`. The host must document that it discovers Agent
-  Skills there; the pack does not claim universal provider compatibility.
-- Remote or cloud agents: prefer project-scoped skills or a prepared worker
-  image. A local user-scope install does not prove remote-worker availability.
+- Codex CLI/Desktop: add the public marketplace pinned to `v0.7.0` and
+  install the plugin.
+- Cursor: clone the tagged public channel and run
+  `scripts/install_agent_skills.py`; project scope is the associate default.
+- Compatible Agent Skills host: use the adapter with an exact documented
+  directory named `skills`.
+- Remote or cloud agents: use project-scoped skills or a prepared worker image.
+  A local user-scope install does not prove remote-worker availability.
 
-See `SUBSCRIBER_SETUP.md` for exact commands and security choices.
+File-layout compatibility does not prove that an untested provider discovers
+or follows the skills. See `SUBSCRIBER_SETUP.md` for exact commands.
 
 ## Feedback And Central Improvement
 
-Submit only a minimal redacted note containing the audience class, command and
-intended outcome, friction, recurrence, observable effect, redaction
-confirmation and an optional rule suggestion. Never submit raw transcripts,
-credentials, client data, sensitive personal information or employee scores.
+Use `IMPROVEMENT_NOTE_TEMPLATE.md`. Submit only a minimal redacted note through
+a private BM/YEEM channel designated by the maintainer. Never submit raw
+transcripts, credentials, client data, sensitive personal information or
+employee scores, and never place sensitive feedback in a public issue.
 
-The maintainer decides whether the evidence belongs in the shared core. Users
-do not edit installed copies, and the pack does not learn or release itself.
+The maintainer decides whether evidence belongs in the shared core, updates the
+canonical source, adds a regression fixture, builds a new immutable version and
+runs QA. Users do not edit installed copies, and the pack does not passively
+learn or release itself.
 
 ## First Safe Practice
 

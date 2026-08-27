@@ -8,15 +8,16 @@ description: Apply Will's Yeem01-backed Codex workflow when a request explicitly
 ## Purpose
 
 Translate Will's explicit command tokens into one predictable working method.
-This is the front door for a private, Yeem01-backed portable operator suite.
+This is the front door for a public, Yeem01-backed portable operator suite.
 The released plugin keeps familiar workflow semantics available on another
 compatible device and includes a dependency-complete set of shared operator
 skills without copying the full Yeem01 workspace.
 
-Codex consumes the generated private marketplace. Cursor and another host may
-consume the same generated skill trees only through a documented Agent Skills
-directory and the channel's bounded adapter. File-layout compatibility does
-not prove that an untested provider discovers or follows the skills.
+Codex consumes the generated public marketplace pinned to an immutable release
+tag. Cursor and another host may consume the same generated skill trees only
+through a documented Agent Skills directory and the channel's bounded adapter.
+File-layout compatibility does not prove that an untested provider discovers
+or follows the skills.
 
 The skill never grants a tool, connector, permission, project role, data
 source, device access, or authority inherited from another user or machine.
@@ -297,13 +298,14 @@ or client-facing mutation.
 ## Audience Separation
 
 - BOOOOM and MSport behavior remains with their own plugin or project.
-- The same core can later be packaged for a named BM employee or associate,
-  but distribution, access, project bindings, credentials, canary, and rollback
-  are managed outside this skill.
+- The public core can be installed by a BM employee or associate, but
+  organizational eligibility, project bindings, credentials, canary, and
+  rollback are managed outside this skill.
 - A portable packet never enrolls a device, binds a project, copies credentials,
   or grants client authority.
-- Create an audience-specific package when private context, terminology, data,
-  or authority differs materially.
+- Create a separate private package when audience-specific context,
+  terminology, data, or authority differs materially; never add it to this
+  public core.
 
 ## Response Shape
 

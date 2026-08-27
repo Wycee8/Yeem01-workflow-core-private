@@ -13,7 +13,7 @@ from pathlib import Path
 
 SKILL_DIR = Path(__file__).resolve().parents[1]
 PLUGIN_DIR = SKILL_DIR.parents[1]
-VERSION = "0.6.2"
+VERSION = "0.7.0"
 
 COMMANDS = (
     "help",
@@ -55,6 +55,13 @@ PORTABLE_SKILLS = {
     "research",
     "user-skill",
     "workspace-implementation-planning",
+}
+
+FORBIDDEN_PORTABLE_PATHS = {
+    "skills/improve/scripts/control_room_skill_scan.py",
+    "skills/improve/scripts/scan_skill_opportunities.py",
+    "skills/improve/scripts/test_control_room_skill_scan.py",
+    "skills/improve/scripts/test_scan_skill_opportunities.py",
 }
 
 IGNORED_PARTS = {".DS_Store", "__pycache__", ".pytest_cache"}
@@ -130,8 +137,8 @@ def validate_manifest() -> None:
             "author metadata must identify the canonical source and remain URL-free")
     require("Yeem01-backed" in manifest["description"],
             "manifest must declare the Yeem01-backed source model")
-    require({"private", "yeem01", "onboarding", "workflow"} <= set(manifest["keywords"]),
-            "manifest keywords must declare source, privacy, onboarding, and workflow")
+    require({"public", "yeem01", "onboarding", "workflow"} <= set(manifest["keywords"]),
+            "manifest keywords must declare source, visibility, onboarding, and workflow")
     defaults = manifest["interface"]["defaultPrompt"]
     require(isinstance(defaults, list) and 1 <= len(defaults) <= 3,
             "invalid default prompts")
@@ -157,9 +164,9 @@ def validate_marketplace(marketplace_path: Path) -> None:
             "installation policy mismatch")
     require(entry["policy"]["authentication"] == "ON_INSTALL",
             "auth policy mismatch")
-    require(marketplace["name"] == "yeem01-private",
-            "marketplace must be yeem01-private")
-    require(marketplace.get("interface", {}).get("displayName") == "Yeem01 Private",
+    require(marketplace["name"] == "yeem01",
+            "marketplace must be yeem01")
+    require(marketplace.get("interface", {}).get("displayName") == "YEEM",
             "marketplace display name mismatch")
 
 
@@ -239,12 +246,16 @@ def validate_skill() -> None:
                 f"onboarding lifecycle missing {lifecycle_mode}")
     for section in (
         "## Source And Output", "## Normal Update Flow",
-        "## Simple Feedback Contract", "## Central Private Distribution",
+        "## Simple Feedback Contract", "## Central Public Distribution",
         "## Release Rule",
     ):
         require(section in maintenance, f"maintenance missing section: {section}")
-    require("individual GitHub" in maintenance and "No shared JSON credential" in maintenance,
-            "maintenance must define identity-based subscriber access")
+    maintenance_lower = maintenance.lower()
+    require("public read" in maintenance_lower and "shared json" in maintenance_lower
+            and "password" in maintenance_lower,
+            "maintenance must define public no-secret access")
+    require("immutable release tag" in maintenance,
+            "maintenance must require version-pinned installs")
     require("provider-layout canaries" in maintenance,
             "maintenance must require provider adapter validation")
     combined_core = "\n".join((skill, contract, onboarding, maintenance)).lower()
@@ -254,6 +265,8 @@ def validate_skill() -> None:
     ):
         require(forbidden_phrase not in combined_core,
                 f"access decision leaked into core behavior: {forbidden_phrase}")
+    require("upload everything to drive" not in combined_core,
+            "real-provider bulk-upload example must not appear in core guidance")
 
 
 def validate_bundle_manifest(files: set[str]) -> int:
@@ -264,7 +277,7 @@ def validate_bundle_manifest(files: set[str]) -> int:
         return 1
 
     manifest = json.loads(read_text(manifest_path))
-    require(manifest["schema_version"] == "yeem01_workflow_core_bundle.v1",
+    require(manifest["schema_version"] == "yeem01_workflow_core_bundle.v2",
             "bundle manifest schema mismatch")
     require(manifest["plugin"] == "yeem01-workflow-core", "bundle plugin mismatch")
     require(manifest["version"] == VERSION, "bundle version mismatch")
@@ -285,6 +298,10 @@ def validate_bundle_manifest(files: set[str]) -> int:
                 f"bundled source tree hash invalid: {name}")
         require(tree_sha256(PLUGIN_DIR / "skills" / name) == entry["tree_sha256"],
                 f"bundled skill tree hash mismatch: {name}")
+        require(isinstance(entry.get("portable_excluded"), list),
+                f"portable exclusion inventory missing: {name}")
+        require(isinstance(entry.get("portable_replacements"), int),
+                f"portable replacement count missing: {name}")
     actual_dirs = {
         path.name for path in (PLUGIN_DIR / "skills").iterdir()
         if path.is_dir() and path.name != "yeem01-workflow-core"
@@ -303,6 +320,8 @@ def validate_privacy_and_inventory() -> int:
         require(not IGNORED_PARTS.intersection(relative_parts) and path.suffix != ".pyc",
                 f"generated cache/noise is not allowed: {path.relative_to(PLUGIN_DIR)}")
     skill_count = validate_bundle_manifest(files)
+    require(not (files & FORBIDDEN_PORTABLE_PATHS),
+            f"forbidden public scanner paths present: {sorted(files & FORBIDDEN_PORTABLE_PATHS)}")
     email_pattern = re.compile(r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b", re.IGNORECASE)
     secret_patterns = (
         re.compile(r"\bsk-[A-Za-z0-9_-]{16,}\b"),
@@ -334,7 +353,7 @@ def validate_privacy_and_inventory() -> int:
 def validate_cases() -> int:
     cases_path = SKILL_DIR / "references" / "validation-cases.json"
     payload = json.loads(read_text(cases_path))
-    require(payload["schema_version"] == "3.1", "fixture schema must be 3.1")
+    require(payload["schema_version"] == "3.2", "fixture schema must be 3.2")
     cases = payload["cases"]
     require(len(cases) >= 60, "insufficient validation coverage")
     ids = [case["id"] for case in cases]
@@ -361,10 +380,11 @@ def validate_cases() -> int:
         "privacy_no_employee_scoring": "refuse_employee_performance_scoring",
         "maintenance_explain_source": "yeem01_source_generated_release_model",
         "maintenance_no_device_edit": "edit_yeem01_source_not_device_copy",
-        "maintenance_no_shared_json_key": "identity_authentication_no_shared_secret",
-        "maintenance_cursor_setup": "private_clone_agent_skills_adapter_fresh_session",
+        "maintenance_no_shared_json_key": "public_read_no_shared_secret",
+        "maintenance_cursor_setup": "public_tagged_clone_project_scope_fresh_session",
         "maintenance_provider_limit": "layout_compatibility_not_universal_provider_claim",
-        "maintenance_revocation_limit": "future_fetch_blocked_retained_copy_requires_endpoint_offboarding",
+        "maintenance_revocation_limit": "public_clone_not_revocable_endpoint_removal_only",
+        "maintenance_public_password": "public_repository_has_no_subscriber_password",
         "stop_core_access_decision": "guide_only_host_owns_access_decision",
     }
     by_id = {case["id"]: case["expect"] for case in cases}
@@ -384,7 +404,7 @@ def main() -> int:
     parser.add_argument(
         "--marketplace",
         type=Path,
-        help="Validate the private distribution marketplace at this path.",
+        help="Validate the generated public distribution marketplace at this path.",
     )
     parser.add_argument(
         "--print-hashes",
@@ -405,7 +425,7 @@ def main() -> int:
     print(f"PASS: yeem01-workflow-core {VERSION} contract; {count} fixtures")
     print(f"PASS: portable suite with {skill_count} skills; onboarding, maintenance, privacy, inventory, and host boundaries")
     if args.marketplace is not None:
-        print("PASS: private marketplace wiring")
+        print("PASS: public marketplace wiring")
     if args.print_hashes:
         for relative in sorted(plugin_files()):
             print(f"{sha256(PLUGIN_DIR / relative)}  {relative}")

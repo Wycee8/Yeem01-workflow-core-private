@@ -176,13 +176,29 @@ with `approval-packet-builder`.
      freezes, backups, and other controls as subordinate enablers unless
      governance or recovery is itself the requested consumer result.
 
-   Classify candidate rows internally as `usable_deliverable`, `decision`,
-   `verified_result`, `verified_capability`, `enabler`, `control`, or
-   `time_marker`. Top-level milestones normally use the first four classes.
-   Nest, merge, or remove enablers, controls, and time markers unless the
-   operator explicitly requested one as the deliverable. Treat time as a
-   constraint or sequencing input, not the default completion unit; retain a
-   real external deadline when it materially defines acceptance.
+   Apply the **Milestone-versus-step classification** before keeping a row:
+   - a **milestone** is a remaining consumer-recognizable result, genuine
+     decision, verified result, or verified capability that closes one
+     distinct finish-line acceptance criterion;
+   - a **step** is an action that produces a milestone, such as research,
+     drafting, editing, implementation, setup, migration, validation, or
+     documentation;
+   - a **gate** is human or authority input that unlocks a milestone; show it
+     under `Need from Will`, not as a separate roadmap row;
+   - **proof** is the observable evidence that closes a milestone; show it
+     under `Accepted when`, not as a separate roadmap row.
+
+   Classify milestone candidates internally as `usable_deliverable`,
+   `decision`, `verified_result`, `verified_capability`, `enabler`, `control`,
+   or `time_marker`. Top-level milestones normally use the first four classes.
+   For each retained row, name its distinct finish-line criterion and run a
+   merge test: if an adjacent row closes the same criterion, or both can be
+   accepted as one consumer result without losing a real decision boundary,
+   merge them. Nest, merge, or remove steps, enablers, controls, proofs, gates,
+   and time markers unless the operator explicitly requested one as the
+   deliverable. Treat time as a constraint or sequencing input, not the
+   default completion unit; retain a real external deadline when it materially
+   defines acceptance.
 
    After drafting the milestone map, scan it for unresolved human decisions.
    Ask only when a decision would change scope, authority, ownership, primary

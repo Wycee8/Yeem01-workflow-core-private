@@ -27,25 +27,24 @@ genuinely needed.
 - Goal: make planning easier to understand and resume.
 - Primary usable deliverable: one durable milestone roadmap that Will can steer and a future session can resume.
 - Consumer and intended use: Will uses it to choose direction; the next worker uses it to continue the current milestone.
-- Minimum useful completed set: three deliverable milestones, current focus, human-input gates, and acceptance proof.
-- Representative finished example: M2 names the accepted planning contract and how Will will know it is usable.
+- Minimum useful completed set: the two remaining deliverables, current focus, human-input gates, and acceptance proof.
+- Representative finished example: M1 is a usable persistent plan that Will can steer and a future session can resume.
 - Acceptance proof: Will can identify what he receives, what decision is needed, and what evidence closes each milestone without reading technical controls.
 - Finish line: Will can steer the complete journey without reading task-level controls.
-- Milestone arc: align direction -> establish the plan contract -> prove behavior.
-- Current position: M2 - establish the durable plan contract.
-- On track: Yes - the current milestone directly unlocks behavior proof.
+- Milestone arc: usable persistent plan -> independent behavior result.
+- Current position: the direction brief is accepted; M1 is the first remaining outcome.
+- On track: Yes - the current milestone directly unlocks independent behavior proof.
 - Need from Will: None. Alignment is locked from the approved project goal and current canonical plan.
 
 | Milestone deliverable | What it enables | Need from Will | Accepted when | State |
 | --- | --- | --- | --- | --- |
-| M1 - Accepted direction brief | The planner can work from stable goal, boundaries, and success evidence | Confirm direction | Will accepts the scope and non-goals | Done |
-| M2 - Usable persistent plan | Will can steer the journey and a future session can resume it | None now | Contract tests prove the milestone and continuation fields | Current |
-| M3 - Behavior proof receipt | Will can decide whether the planning behavior is ready for use | Choose the real-session test prompt | A fresh-context canary follows the deliverable-first route | Planned |
+| M1 - Usable persistent plan | Will can steer the journey and a future session can resume it | None now | Will can identify each remaining outcome, decision, and acceptance condition without reading task-level controls | Current |
+| M2 - Independent behavior result | Will can decide whether the planning behavior is ready for routine use | None now | The fixed fresh-context canary follows the deliverable-first route across its boundary cases | Planned |
 
 **Current focus**
 
-- Complete M2, then run focused contract checks.
-- Human input: none until the real-session test prompt is selected.
+- Complete M1, then run focused contract checks and the fixed fresh-context canary.
+- Human input: none; the approved boundary-case pack supplies the test prompts.
 ```
 
 Use `-plan full` to add the task/path/dependency/validator table. Do not add a

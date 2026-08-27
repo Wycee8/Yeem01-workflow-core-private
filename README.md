@@ -1,21 +1,28 @@
-# Yeem01 Workflow Core Private Channel
+# Yeem01 Workflow Core
 
-`yeem01-workflow-core` is Will's private, versioned workflow pack for using the
+`yeem01-workflow-core` is YEEM's small, versioned workflow pack for using the
 same core audit, discussion, planning, QA, evaluation, improvement, research,
-pipeline and project-context methods on another device without cloning the
+pipeline and project-context methods on another device without cloning the full
 Yeem01 workspace.
 
-- Current stable version: `0.6.2`
-- Rollback: `0.5.0`
-- Marketplace: `yeem01-private`
+- Current release: `0.7.0`
+- Previous technical rollback: `0.6.2`
+- Marketplace: `yeem01` (display name `YEEM`)
+- Public repository: `Wycee8/Yeem01-workflow-core-private`
+
+The repository name retains a legacy `private` suffix, but repository
+visibility controls access. When the repository is public, anyone can read and
+clone it; there is no subscriber password or JSON key.
 
 ## Fast Start
 
-Codex on an authorized device:
+These version-pinned commands work after tag `v0.7.0` is published.
+
+Codex CLI/Desktop:
 
 ```sh
-codex plugin marketplace add git@github.com:Wycee8/Yeem01-workflow-core-private.git --ref main --json
-codex plugin add yeem01-workflow-core@yeem01-private --json
+codex plugin marketplace add Wycee8/Yeem01-workflow-core-private --ref v0.7.0 --json
+codex plugin add yeem01-workflow-core@yeem01 --json
 ```
 
 Open a fresh task and enter:
@@ -24,17 +31,34 @@ Open a fresh task and enter:
 -onboarding
 ```
 
-Cursor on an authorized device:
+Cursor project scope (recommended for associates):
 
 ```sh
-git clone git@github.com:Wycee8/Yeem01-workflow-core-private.git
+git clone --branch v0.7.0 --depth 1 \
+  https://github.com/Wycee8/Yeem01-workflow-core-private.git
 cd Yeem01-workflow-core-private
-python3 scripts/install_agent_skills.py --provider cursor --scope user --action install
+python3 scripts/install_agent_skills.py --provider cursor --scope project \
+  --project-root /absolute/path/to/your/project --action install
+python3 scripts/install_agent_skills.py --provider cursor --scope project \
+  --project-root /absolute/path/to/your/project --action check
 ```
 
-Start a new Cursor chat after installation. For Cursor cloud or remote workers,
-use project scope or a prepared worker image; a local user-level install is not
-automatically copied to a remote worker.
+Start a new Cursor chat in that project and enter `-onboarding`. A local skill
+install does not automatically propagate to Cursor cloud or another remote
+worker; use project scope or a prepared worker image and verify a fresh session.
+
+## Copyable New-Device Installation Prompt
+
+```text
+Install Yeem01 Workflow Core v0.7.0 from the public GitHub repository
+Wycee8/Yeem01-workflow-core-private. Pin every fetch to tag v0.7.0. Use
+the documented Codex plugin route, or for Cursor prefer project scope and run
+the included install adapter followed by check. Do not request a password,
+JSON key, credentials, Drive upload, or full Yeem01 workspace. Do not overwrite
+unmanaged skills. After installation, open a fresh session, run -onboarding,
+then run the four-case fictional smoke canary in SUBSCRIBER_SETUP.md. Report
+commands, version, checks and side effects, and stop on any mismatch.
+```
 
 ## What Is Included
 
@@ -56,28 +80,30 @@ behaviours, not extra skill directories.
 
 ## Read Next
 
-- `USE_MANUAL.md` — skill list, command map, examples, workflow and boundaries.
-- `SUBSCRIBER_SETUP.md` — authentication, install, update, rollback and
+- `USE_MANUAL.md` — skill list, command map, examples and workflow boundaries.
+- `SUBSCRIBER_SETUP.md` — install, update, uninstall, rollback and
   troubleshooting.
-- `IMPROVEMENT_NOTE_TEMPLATE.md` — minimal redacted feedback for a maintainer.
+- `SECURITY.md` — public-access truth, trusted-release and disclosure rules.
+- `CONTRIBUTING.md` — safe improvement feedback and maintainer release flow.
+- `IMPROVEMENT_NOTE_TEMPLATE.md` — minimal redacted feedback form.
 
 ## Security In One Minute
 
-- The repository is private; GitHub identity controls who can fetch it.
-- There is no shared JSON key. `.agents/plugins/marketplace.json` is public-style
-  package metadata inside a private repository, not a credential.
-- Each person or device uses its own GitHub identity or device key.
-- The pack contains no API keys, private keys, tokens, connectors, client data,
-  task history, raw transcripts or employee telemetry.
-- Removing repository access prevents future fetches but cannot erase a clone or
-  installed copy already retained on a device; endpoint offboarding is separate.
+- Public read access needs no password, token or shared JSON key.
+- Install only from the named repository and an immutable `vX.Y.Z` tag.
+- Maintainer GitHub security and release controls protect changes; they do not
+  make public source private.
+- The pack must contain no API keys, private keys, tokens, connectors, client
+  data, raw sessions, task history or employee telemetry.
+- A public clone cannot be revoked or remotely erased. Endpoint removal is a
+  separate device-management responsibility.
 
 ## Maintenance Law
 
-Edit the canonical Yeem01 skill, add a regression case, bump the version, build
-and QA a new immutable release, then publish the generated channel. Never patch
-an installed copy or this generated projection directly.
+Edit the canonical Yeem01 skill, update the public-portability profile when
+needed, add a regression case, bump the version, build and QA a new immutable
+release, then publish the generated channel. Never patch an installed copy,
+generated projection or old release directly.
 
-This version is published through Will's private, identity-controlled GitHub
-channel. Subscriber invitations and credential changes remain separate owner
-actions, and every new version still requires a fresh-session receiver canary.
+Git commit, tag, push, publication and clean-device runtime proof are separate
+owner actions from local package preparation.

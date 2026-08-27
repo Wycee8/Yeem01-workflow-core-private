@@ -107,7 +107,7 @@ the named goal and project boundary.
 Stop and name the host-owned boundary before:
 
 - external communication, uploads, or publication;
-- cloud/service writes, including Drive and Trello;
+- external cloud or service writes;
 - connector installation or authentication;
 - secrets, credentials, pairing, or permission changes;
 - provider spend or live remote canaries;

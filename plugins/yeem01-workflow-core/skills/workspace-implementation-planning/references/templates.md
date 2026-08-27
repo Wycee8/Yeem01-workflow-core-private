@@ -24,7 +24,7 @@ is clear, name the authority source and continue without a redundant question.
 
 | Milestone deliverable | What it enables | Need from Will | Accepted when | State |
 | --- | --- | --- | --- | --- |
-| M1 - <named usable result> | <consumer can perform a job> | <decision/input or None> | <observable use or quality proof> | <planned/current/done/blocked> |
+| M1 - <named usable result> | <consumer can perform a job> | <decision/input or None now> | <observable use or quality proof> | <current/planned/blocked> |
 
 Use this map for `-plan all`. Keep it to the minimum-necessary 1-7 deliverable
 milestones. A top-level row should normally be a usable deliverable, genuine
@@ -37,6 +37,19 @@ roadmap unless the operator explicitly requests a separate non-critical
 appendix. Nest enablers, controls, and time markers; retain a real external
 deadline as a constraint. Do not expand every implementation task unless the
 operator requests `-plan full` or omission would make execution unsafe.
+
+Classify before keeping a row:
+- **Milestone:** a remaining consumer-recognizable result, decision, verified
+  result, or verified capability that closes one distinct finish-line
+  criterion.
+- **Step:** an action used to produce a milestone; keep research, drafting,
+  editing, setup, implementation, migration, validation, and documentation in
+  the current slice or `-plan full`.
+- **Gate:** human or authority input; place it under `Need from Will`.
+- **Proof:** evidence that closes the result; place it under `Accepted when`.
+
+If two rows close the same finish-line criterion or can be accepted as one
+consumer result without losing a real decision boundary, merge them.
 
 ## Current focus
 
@@ -81,8 +94,8 @@ operator requests `-plan full` or omission would make execution unsafe.
    journey without completed, optional, deferred, or control-only padding?
 6. For every row, can you name the exact finish-line acceptance criterion that
    becomes impossible if the row is removed?
-7. Does every milestone name a usable result, human input, and acceptance
-   proof rather than only a process, time box, enabler, or control?
+7. Does every milestone close a distinct criterion that cannot merge into an
+   adjacent result, with its steps, gate, and proof kept subordinate?
 8. Is technical detail limited to `-plan full`, the current slice, or a safety need?
 9. Is the stage/run owner known?
 10. Are file paths or artifact targets named where technical detail is expanded?

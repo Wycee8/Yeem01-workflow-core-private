@@ -1,8 +1,8 @@
 {
   "interface": {
-    "displayName": "Yeem01 Private"
+    "displayName": "YEEM"
   },
-  "name": "yeem01-private",
+  "name": "yeem01",
   "plugins": [
     {
       "category": "Productivity",

@@ -224,13 +224,68 @@ def install_or_update(
     return result
 
 
+def uninstall_managed(target: Path, dry_run: bool) -> dict:
+    """Remove only an intact installation recorded by this pack's manifest."""
+    require(target.is_dir(), f"managed target missing: {target}")
+    existing = load_existing_manifest(target)
+    require(existing is not None, f"install manifest missing: {target / INSTALL_MANIFEST_NAME}")
+
+    managed_skills = existing["skills"]
+    for name, expected_hash in sorted(managed_skills.items()):
+        destination = target / name
+        require((destination / "SKILL.md").is_file(),
+                f"managed skill missing; refusing uninstall: {name}")
+        require(tree_hash(destination) == expected_hash,
+                f"managed skill differs; refusing uninstall: {name}")
+
+    result = {
+        "status": "DRY_RUN" if dry_run else "PASS",
+        "action": "uninstall",
+        "version": existing.get("version", "unknown"),
+        "provider": existing.get("provider", "unknown"),
+        "scope": existing.get("scope", "unknown"),
+        "skill_count": len(managed_skills),
+        "target": str(target),
+        "target_removed": False,
+    }
+    if dry_run:
+        return result
+
+    staging = Path(tempfile.mkdtemp(prefix=".yeem01-uninstall-", dir=target.parent))
+    moved: list[str] = []
+    manifest_path = target / INSTALL_MANIFEST_NAME
+    manifest_moved = False
+    try:
+        for name in sorted(managed_skills):
+            (target / name).rename(staging / name)
+            moved.append(name)
+        manifest_path.rename(staging / INSTALL_MANIFEST_NAME)
+        manifest_moved = True
+    except Exception:
+        if manifest_moved and (staging / INSTALL_MANIFEST_NAME).exists():
+            (staging / INSTALL_MANIFEST_NAME).rename(manifest_path)
+        for name in reversed(moved):
+            backup = staging / name
+            if backup.exists():
+                backup.rename(target / name)
+        raise
+    finally:
+        if staging.exists():
+            shutil.rmtree(staging)
+    return result
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--provider", choices=("cursor", "agent-skills"), default="cursor")
     parser.add_argument("--scope", choices=("user", "project", "explicit"), default="user")
     parser.add_argument("--project-root", type=Path)
     parser.add_argument("--target", type=Path)
-    parser.add_argument("--action", choices=("install", "update", "check"), default="install")
+    parser.add_argument(
+        "--action",
+        choices=("install", "update", "check", "uninstall"),
+        default="install",
+    )
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args()
@@ -242,6 +297,8 @@ def main() -> int:
         if args.action == "check":
             require(not args.dry_run, "--dry-run cannot be combined with check")
             result = check_install(target, expected)
+        elif args.action == "uninstall":
+            result = uninstall_managed(target, args.dry_run)
         else:
             result = install_or_update(target, expected, args.action, args.dry_run)
     except (RuntimeError, OSError, json.JSONDecodeError) as exc:

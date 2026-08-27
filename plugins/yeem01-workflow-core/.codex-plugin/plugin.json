@@ -1,12 +1,12 @@
 {
   "name": "yeem01-workflow-core",
-  "version": "0.6.2",
-  "description": "Yeem01-backed portable workflow suite with bundled operator skills, onboarding, secure subscription guidance, and improvement feedback.",
+  "version": "0.7.0",
+  "description": "Yeem01-backed public portable workflow suite with bundled operator skills, version-pinned onboarding, and redacted improvement feedback.",
   "author": {
     "name": "Yeem01 Workspace"
   },
   "keywords": [
-    "private",
+    "public",
     "yeem01",
     "onboarding",
     "workflow",
@@ -18,8 +18,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Yeem01 Workflow Core",
-    "shortDescription": "Use Will's portable operator workflow suite.",
-    "longDescription": "Provides Will's command front door plus ten portable owners for audit and evaluation, planning, artifact output, QA, improvement, pipelines, research, project charters and user-skill capture, with generated onboarding for Codex and compatible Agent Skills hosts while deferring project authority, credentials and external actions to the host.",
+    "shortDescription": "Use YEEM's portable operator workflow suite.",
+    "longDescription": "Provides the Yeem01 command front door plus ten portable owners for audit and evaluation, planning, artifact output, QA, improvement, pipelines, research, project charters and user-skill capture, with version-pinned onboarding for Codex and compatible Agent Skills hosts while deferring project authority, credentials and external actions to the host.",
     "developerName": "Yeem01 Workspace",
     "category": "Productivity",
     "capabilities": [

@@ -1,16 +1,18 @@
 {
-  "schemaVersion": "plan_all_behavior_cases.v3",
-  "generatedAt": "2026-08-23T17:18:30Z",
-  "purpose": "Boundary-heavy Plan All cases for deliverable-first alignment, minimum-necessary 1-7 milestone roadmaps, counterfactual utility, architecture-late planning, material ambiguity stops, deadline handling, and valid approval targets.",
+  "schemaVersion": "plan_all_behavior_cases.v4",
+  "generatedAt": "2026-08-27T15:09:17Z",
+  "purpose": "Boundary-heavy Plan All cases for deliverable-first alignment, milestone-versus-step classification, minimum-necessary 1-7 milestone roadmaps, counterfactual utility, visible-response fidelity, material ambiguity stops, and valid approval targets.",
   "recentCorpus": {
     "routedRecords": 30,
     "actualPlans": 24,
     "postRolloutPlans": 7,
+    "observedResponseSpecimens": 6,
     "derivedFailurePatterns": [
       "forced milestone padding",
       "completed history in the active roadmap",
       "optional or deferred work in the active roadmap",
-      "pruning controls presented as user deliverables"
+      "pruning controls presented as user deliverables",
+      "Plan Full technical detail leaked into Plan All"
     ]
   },
   "sources": [
@@ -18,6 +20,74 @@
     "skills/workspace-implementation-planning/references/templates.md",
     "skills/artifact-lane-output-defaults/SKILL.md",
     "skills/artifact-lane-output-defaults/references/response-shape-examples.md"
+  ],
+  "realResponseCases": [
+    {
+      "case_id": "observed-plan-all-001-marketing-v9",
+      "source_ref": "recent-plan-all-audit:marketing-ai-v9.0",
+      "source_kind": "observed_response_normalized",
+      "normalization_note": "The audited response's milestone names, ordering, and states are preserved; surrounding prose is shortened and client detail omitted.",
+      "response_text": "**Goal and Milestone Check**\n\n- Goal: deliver the commercial growth roadmap.\n- Current position: direction is accepted.\n\n| Milestone deliverable | What it enables | Need from Will | Accepted when | State |\n| --- | --- | --- | --- | --- |\n| M1 - Accepted business direction | The team can plan within an agreed scope | None | Direction is accepted | Done |\n| M2 - User-first content and behaviour definition | The team can describe the intended experience | None | The definition is reviewed | Current |\n| M3 - Routing contract | The system can dispatch the work | None | Route checks pass | Planned |",
+      "expected_status": "fail",
+      "expected_findings": ["completed_history", "top_level_enabler", "forced_milestone_padding"],
+      "min_milestones": 1,
+      "max_milestones": 1
+    },
+    {
+      "case_id": "observed-plan-all-002-marketing-v9-1",
+      "source_ref": "recent-plan-all-audit:marketing-ai-v9.1",
+      "source_kind": "observed_response_normalized",
+      "normalization_note": "The audited response's milestone topology and status labels are preserved; explanatory copy is compressed.",
+      "response_text": "**Goal and Milestone Check**\n\n- Goal: deliver an operator-ready planning result.\n- Current position: direction and a direct-model comparison already exist.\n\n| Milestone deliverable | What it enables | Need from Will | Accepted when | State |\n| --- | --- | --- | --- | --- |\n| M1 - Accepted direction brief | Planning can begin | None | Direction is accepted | Done |\n| M2 - Direct-model baseline | The route can be compared | None | Baseline is recorded | Current |\n| M3 - Delivery plan | The operator can steer completion | None | The plan is accepted | Planned |",
+      "expected_status": "fail",
+      "expected_findings": ["completed_history", "top_level_enabler", "forced_milestone_padding"],
+      "min_milestones": 1,
+      "max_milestones": 1
+    },
+    {
+      "case_id": "observed-plan-all-003-marketing-v11",
+      "source_ref": "recent-plan-all-audit:marketing-ai-v11.0",
+      "source_kind": "observed_response_normalized",
+      "normalization_note": "The three audited top-level rows are retained verbatim enough to preserve their result-versus-enabler classification.",
+      "response_text": "**Goal and Milestone Check**\n\n- Goal: produce the Commercial Growth Roadmap.\n- Current position: remaining work is clear.\n\n| Milestone deliverable | What it enables | Need from Will | Accepted when | State |\n| --- | --- | --- | --- | --- |\n| M1 - Capability library | Reusable planning inputs exist | None | Library coverage is complete | Current |\n| M2 - Selection and routing | Inputs reach the correct planner | None | Routing checks pass | Planned |\n| M3 - Commercial Growth Roadmap | Leadership can steer growth work | None | Leadership accepts the roadmap | Planned |",
+      "expected_status": "fail",
+      "expected_findings": ["top_level_enabler", "forced_milestone_padding"],
+      "min_milestones": 1,
+      "max_milestones": 1
+    },
+    {
+      "case_id": "observed-plan-all-004-msport-o0-o6",
+      "source_ref": "recent-plan-all-audit:msport-o0-o6",
+      "source_kind": "observed_response_normalized",
+      "normalization_note": "The audited seven-row O0-O6 topology, completed states, deferred portal, and source-packet control row are preserved; descriptions are shortened.",
+      "response_text": "**Goal and Milestone Check**\n\n- Goal: establish the operating handover route and prove it live.\n- Current position: authority, definitions, and intake material already exist.\n\n| Milestone deliverable | What it enables | Need from Will | Accepted when | State |\n| --- | --- | --- | --- | --- |\n| O0 - Accepted authority | Work can use the agreed boundary | None | Authority is accepted | Done |\n| O1 - Design definitions | Designers can interpret requests | None | Definitions are accepted | Done |\n| O2 - Source packet | Local testing can begin | None | Packet is complete | Done |\n| O3 - Local request route | Requests reach the handover path | None | Local route works | Current |\n| O4 - Corrected local Handover | Operators receive the intended handover | None | Local handover is accepted | Planned |\n| O5 - First live request-to-Handover proof | Operators can trust the route in use | None | One live request completes correctly | Planned |\n| O6 - Optional portal | A later portal could expose the route | None | Portal is available | Deferred |",
+      "expected_status": "fail",
+      "expected_findings": ["completed_history", "deferred_or_optional_work", "top_level_enabler", "forced_milestone_padding"],
+      "min_milestones": 2,
+      "max_milestones": 2
+    },
+    {
+      "case_id": "observed-plan-all-005-msport-corrected-o4-o5",
+      "source_ref": "recent-plan-all-audit:msport-corrected-o4-o5",
+      "source_kind": "observed_response_normalized",
+      "normalization_note": "The audited corrected two-row response is retained as the positive visible-response specimen.",
+      "response_text": "**Goal and Milestone Check**\n\n- Goal: complete and prove the operating handover route.\n- Current position: authority, definitions, and intake material are accepted history.\n\n| Milestone deliverable | What it enables | Need from Will | Accepted when | State |\n| --- | --- | --- | --- | --- |\n| O4 - Corrected local Handover | Operators receive a usable handover from the local route | None now | The corrected handover is accepted locally | Current |\n| O5 - First live request-to-Handover proof | Operators can trust the route in ordinary use | None now | One live request completes with the accepted handover | Planned |",
+      "expected_status": "pass",
+      "expected_findings": [],
+      "min_milestones": 2,
+      "max_milestones": 2
+    },
+    {
+      "case_id": "observed-plan-all-006-design-agent-r2",
+      "source_ref": "recent-plan-all-audit:design-agent-r2",
+      "source_kind": "observed_response_normalized",
+      "normalization_note": "The audited roadmap remains concise, while the observed task-level production sequence and filename detail are represented directly below it.",
+      "response_text": "**Goal and Milestone Check**\n\n- Goal: deliver the approved design-agent result.\n- Current position: direction is accepted.\n\n| Milestone deliverable | What it enables | Need from Will | Accepted when | State |\n| --- | --- | --- | --- | --- |\n| M1 - Reviewable design package | Will can review the intended experience | None now | The package is accepted | Current |\n| M2 - Verified design result | The implementation owner can proceed with confidence | None now | Fidelity and use evidence pass | Planned |\n\n### Production sequence\n\n1. Write P0_SOURCE_PACKET.md.\n2. Create P1_DIRECTION.json.\n3. Add P2_LAYOUT.tsx.\n4. Validate the state model.\n5. Record node mapping.\n6. Generate the review surface.\n7. Capture the operator receipt.\n8. Run the focused validator.\n9. Refresh the status table.\n10. Package the handoff.\n11. Record recovery notes.\n12. Verify every state.\n13. Reconcile identifiers.\n14. Prepare the next worker prompt.\n15. Check output paths.\n16. Capture hashes.\n17. Update proof notes.\n18. Close the task list.",
+      "expected_status": "fail",
+      "expected_findings": ["plan_full_leakage"],
+      "min_milestones": 2,
+      "max_milestones": 2
+    }
   ],
   "cases": [
     {
@@ -101,8 +171,8 @@
       "max_options": 0,
       "approval_mode": "allowed_existing",
       "required_question_terms": [],
-      "required_deliverable_terms": ["onboarding", "completion proof"],
-      "min_required_deliverable_terms": 2,
+      "required_deliverable_terms": ["onboarding"],
+      "min_required_deliverable_terms": 1,
       "allowed_top_level_classes": ["usable_deliverable", "verified_result"]
     },
     {
@@ -211,15 +281,15 @@
       "case_id": "plan-all-behavior-012",
       "prompt": "-plan all: audit, schema, validator, sync, and QA",
       "authority_context": "The request lists only process and control work. No usable result, consumer job, or project finish line is named or recoverable from current authority.",
-      "expected_alignment": "ambiguous",
-      "expected_on_track": "at_risk",
+      "expected_alignment": "missing",
+      "expected_on_track": "off_track",
       "expected_time_role": "none",
       "must_ask": true,
       "must_emit_roadmap": false,
       "min_options": 2,
       "max_options": 3,
       "approval_mode": "none",
-      "required_question_terms": ["usable", "result"],
+      "required_question_terms": ["deliverable", "consumer"],
       "required_deliverable_terms": [],
       "min_required_deliverable_terms": 0,
       "allowed_top_level_classes": ["usable_deliverable", "decision", "verified_result", "verified_capability"]
@@ -238,7 +308,7 @@
       "max_options": 0,
       "approval_mode": "pending_proposal",
       "required_question_terms": [],
-      "required_deliverable_terms": ["trusted simplification baseline", "disposition map", "verified lean workspace"],
+      "required_deliverable_terms": ["baseline", "simplified", "verified"],
       "min_required_deliverable_terms": 3,
       "allowed_top_level_classes": ["usable_deliverable", "decision", "verified_result", "verified_capability"]
     },

@@ -34,32 +34,32 @@ starter_workspace/plugins/yeem01-workflow-core
 ```
 
 The release builder adds allowlisted canonical skill directories from
-`starter_workspace/skills/` and records their exact inventories and hashes.
-Authorized compatible devices subscribe to one versioned generated private
-channel, not editable copies that drift independently. Codex uses the private
-marketplace; Cursor and compatible Agent Skills hosts use the same generated
-skill trees through the channel adapter and their documented discovery path.
+`starter_workspace/skills/`, applies the declared public-portability profile,
+and records exact source and package inventories and hashes. Compatible devices
+install one immutable tagged release from the generated public channel, not
+editable copies that drift independently. Codex uses marketplace `yeem01`;
+Cursor and compatible Agent Skills hosts use the same generated skill trees
+through the channel adapter and their documented discovery path.
 
 ## Getting Started
 
-The handoff source is a small private Git-backed channel. Setup is:
+The handoff source is a small public Git-backed channel. Setup is:
 
-1. authenticate the receiving device to the owner-private Git repository;
-2. for Codex, add `Wycee8/Yeem01-workflow-core-private` as a marketplace pinned
-   to `main` and install `yeem01-workflow-core@yeem01-private`;
-3. for Cursor or a compatible Agent Skills host, clone the private channel and
-   run its bounded adapter against the provider's documented `skills`
-   directory;
+1. verify repository `Wycee8/Yeem01-workflow-core-private` and an immutable
+   `vX.Y.Z` release tag; no password or JSON key is needed for public read;
+2. for Codex, add the repository as a marketplace pinned to that tag and install
+   `yeem01-workflow-core@yeem01`;
+3. for Cursor, clone the same tag and use the bounded adapter with project scope
+   by default; another Agent Skills host needs its documented `skills` path;
 4. start a fresh task and enter `-onboarding`; and
-5. run the read-only canary in the private-device handoff.
+5. run the four-case fictional smoke canary in `SUBSCRIBER_SETUP.md`.
 
 The compact description lives in `README.md`, the complete command and skill
-guide lives in `USE_MANUAL.md`, and exact authentication, install, update and
-rollback steps live in `SUBSCRIBER_SETUP.md` and that release's
-`PRIVATE_DEVICE_HANDOFF.md`. There is no shared JSON key: repository access is
-granted to each subscriber identity outside the pack. Installing the package does not copy the full Yeem01
-workspace, credentials, connectors, project data, domain systems, or another
-device's settings.
+guide lives in `USE_MANUAL.md`, and exact install, update, uninstall and
+rollback steps live in `SUBSCRIBER_SETUP.md`. There is no shared JSON key or
+repository password. Installing the package does not copy the full Yeem01
+workspace, credentials, connectors, project data, domain systems, sessions or
+another device's settings.
 
 ## How To Invoke It
 
@@ -224,9 +224,10 @@ client, personal and credential data removed: yes|no
 suggested rule, if any:
 ```
 
-The maintainer converts supported feedback into a Yeem01 source change and a
-new regression fixture. Notes are not raw session logs or employee performance
-records.
+Send the note through a private BM/YEEM channel designated by the maintainer;
+never place sensitive feedback in a public issue. The maintainer converts
+supported evidence into a Yeem01 source change and a new regression fixture.
+Notes are not raw session logs or employee performance records.
 
 ## First Safe Practice
 

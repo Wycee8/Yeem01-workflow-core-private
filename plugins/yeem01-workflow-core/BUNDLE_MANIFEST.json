@@ -1,50 +1,67 @@
 {
   "front_door": "skills/yeem01-workflow-core",
   "plugin": "yeem01-workflow-core",
-  "schema_version": "yeem01_workflow_core_bundle.v1",
+  "schema_version": "yeem01_workflow_core_bundle.v2",
   "skills": [
     {
       "file_count": 4,
       "name": "artifact-lane-output-defaults",
+      "portable_excluded": [],
       "portable_frontmatter_keys_removed": [],
+      "portable_replacements": 0,
       "role": "operator artifact and summary contracts",
+      "source_file_count": 4,
       "source_path": "starter_workspace/skills/artifact-lane-output-defaults",
-      "source_tree_sha256": "00d1f221aa938c381ef4e661f32aac53384dbc0acc44435a33720a8a991a7c2e",
-      "tree_sha256": "00d1f221aa938c381ef4e661f32aac53384dbc0acc44435a33720a8a991a7c2e"
+      "source_tree_sha256": "18ae5d563b074c136a890a87468c9ce200d762f96f0b5cb9207d91bc57a1bf9b",
+      "tree_sha256": "18ae5d563b074c136a890a87468c9ce200d762f96f0b5cb9207d91bc57a1bf9b"
     },
     {
       "file_count": 8,
       "name": "audit-check",
+      "portable_excluded": [],
       "portable_frontmatter_keys_removed": [
         "aliases",
         "disable-model-invocation",
         "user-invocable"
       ],
+      "portable_replacements": 0,
       "role": "direction audit and impact evaluation",
+      "source_file_count": 8,
       "source_path": "starter_workspace/skills/audit-check",
       "source_tree_sha256": "117a67b3bc773831cb206073b2843d9ec613a87c51caa75d84037150fb3c435a",
       "tree_sha256": "391e0c5ab66fcc52a7fe6ef9547e79589cf51c6edbc86669a0936468d2c31834"
     },
     {
-      "file_count": 10,
+      "file_count": 6,
       "name": "improve",
+      "portable_excluded": [
+        "scripts/control_room_skill_scan.py",
+        "scripts/scan_skill_opportunities.py",
+        "scripts/test_control_room_skill_scan.py",
+        "scripts/test_scan_skill_opportunities.py"
+      ],
       "portable_frontmatter_keys_removed": [
         "disable-model-invocation",
         "user-invocable"
       ],
+      "portable_replacements": 8,
       "role": "evidence-backed improvement proposals",
+      "source_file_count": 10,
       "source_path": "starter_workspace/skills/improve",
       "source_tree_sha256": "7d811615bb775656da0e733c8b08b4bf2055a1c8cdbee7571a348adb256edb0f",
-      "tree_sha256": "56f8c4038439de195993ea7734cc918394dd84175e7a49e9048d18e569879cf9"
+      "tree_sha256": "9e2a4bb7da165d82c770444444a5440db5f2fe6226075acd8a04b01abf2d13c7"
     },
     {
       "file_count": 3,
       "name": "pipeline",
+      "portable_excluded": [],
       "portable_frontmatter_keys_removed": [
         "disable-model-invocation",
         "user-invocable"
       ],
+      "portable_replacements": 0,
       "role": "portable reusable workflow and Double Diamond routing",
+      "source_file_count": 3,
       "source_path": "starter_workspace/skills/pipeline",
       "source_tree_sha256": "02f7f9cd0b90ce7ee89068a603f600d8a11e4dd16cfbe8054842ce39c03c84fc",
       "tree_sha256": "f217b0c455abe5b30d4307f97c6ff0d462de8ae45c889176877e221a252c7fd0"
@@ -52,11 +69,14 @@
     {
       "file_count": 11,
       "name": "project-charter-docs",
+      "portable_excluded": [],
       "portable_frontmatter_keys_removed": [
         "disable-model-invocation",
         "user-invocable"
       ],
+      "portable_replacements": 0,
       "role": "durable project charter and authority context",
+      "source_file_count": 11,
       "source_path": "starter_workspace/skills/project-charter-docs",
       "source_tree_sha256": "955e6f7e0bfa3659cb4b7be22d7f31193b30c5010468766d187ed09ba7bddac3",
       "tree_sha256": "4aba25ca81149f4930a8b4205cfe5a349a74da5466bd5015f24d7f323f57a2da"
@@ -64,11 +84,14 @@
     {
       "file_count": 2,
       "name": "quality-check",
+      "portable_excluded": [],
       "portable_frontmatter_keys_removed": [
         "disable-model-invocation",
         "user-invocable"
       ],
+      "portable_replacements": 0,
       "role": "post-build quality assurance",
+      "source_file_count": 2,
       "source_path": "starter_workspace/skills/quality-check",
       "source_tree_sha256": "6e5436ad0ec67009f4a57b47a6d7f6c51898ca2bdf3cd4c7b8d366a169fe6a2c",
       "tree_sha256": "ab07dd5a76cb1a73ddf7f3b9c64469cd1913bbd74f8503150943d0a1f20f4839"
@@ -76,12 +99,15 @@
     {
       "file_count": 6,
       "name": "research",
+      "portable_excluded": [],
       "portable_frontmatter_keys_removed": [
         "arguments",
         "command",
         "user-invocable"
       ],
+      "portable_replacements": 0,
       "role": "evidence-backed research workflows",
+      "source_file_count": 6,
       "source_path": "starter_workspace/skills/research",
       "source_tree_sha256": "80efeb33a0592715b538b5d857d6644ecaf6fea30678a4df5d77a8fce69bab3d",
       "tree_sha256": "5ac61109514474dc85f67cb233b39dfc623acfc76f4aa3316f60b75c76ef570d"
@@ -89,11 +115,14 @@
     {
       "file_count": 3,
       "name": "user-skill",
+      "portable_excluded": [],
       "portable_frontmatter_keys_removed": [
         "disable-model-invocation",
         "user-invocable"
       ],
+      "portable_replacements": 0,
       "role": "user-first durable skill/change gate",
+      "source_file_count": 3,
       "source_path": "starter_workspace/skills/user-skill",
       "source_tree_sha256": "d94d9f7281287d6cb40c33d6be0729a275d81ef73b6fa1418af15942e8299b9f",
       "tree_sha256": "3f1dcbe36c0604dcdd5d8c898a6ab0c8224a6c391969651672ad9c2ef538c3ca"
@@ -101,15 +130,18 @@
     {
       "file_count": 3,
       "name": "workspace-implementation-planning",
+      "portable_excluded": [],
       "portable_frontmatter_keys_removed": [
         "user-invocable"
       ],
+      "portable_replacements": 0,
       "role": "current-slice, milestone and full planning",
+      "source_file_count": 3,
       "source_path": "starter_workspace/skills/workspace-implementation-planning",
-      "source_tree_sha256": "e0d5a878d2eb273c043aaba15b3e263539745c5ceb9f8a4e5d22dba37d03053f",
-      "tree_sha256": "c0ebc01183831c450c13b03c7fd311503576b53077bef2784320f14d12f917fd"
+      "source_tree_sha256": "764b40158f4edba76f5652528c78acd0e4a9029797e034a15da912a66f31f871",
+      "tree_sha256": "dda3797118f674b1587fa8357ced6bf475503fbf9e3fd892d20951c8e4e01f07"
     }
   ],
   "source_model": "YEEM01_CANONICAL_GENERATED_RELEASE",
-  "version": "0.6.2"
+  "version": "0.7.0"
 }

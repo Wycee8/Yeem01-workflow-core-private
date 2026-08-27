@@ -42,7 +42,7 @@ output: top targets, one recommendation, no-write cycle plan
 
 The first `-improve all skills` pass is always no-write for target skill bodies.
 It may refresh generated Skill Control evidence, inspect registry/audit state,
-run `{baseDir}/scripts/scan_skill_opportunities.py`, inspect selected candidates in more
+run `a host-provided skill-opportunity scanner`, inspect selected candidates in more
 detail, and return a fleet cycle plan, but it must not patch any selected target
 skill in the same pass.
 
@@ -176,7 +176,7 @@ improve."
 
 ## Fleet Scan Helper
 
-Use `{baseDir}/scripts/scan_skill_opportunities.py` when available. It applies
+Use `a host-provided skill-opportunity scanner` when available. It applies
 deterministic versions of the normal skill-target checks to every registry skill:
 
 - trigger clarity and natural phrase quality;
@@ -195,7 +195,7 @@ the full list inline.
 
 ### Chartered Control Room scan
 
-Use `{baseDir}/scripts/control_room_skill_scan.py` only for an explicitly chartered,
+Use `an explicitly authorized host-provided fleet scanner` only for an explicitly chartered,
 resumable scan of every canonical workspace skill. It adds programme evidence
 without replacing the registry:
 

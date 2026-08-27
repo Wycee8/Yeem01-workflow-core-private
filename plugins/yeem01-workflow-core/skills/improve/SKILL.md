@@ -162,12 +162,12 @@ highest-value move is blocked, too risky, or needs missing evidence first.
    unrelated skills, generated registries, runtime loading, or retired aliases.
 11. For `-improve all skills`, run `fleet-plan` first. This first pass may
    refresh/read Skill Control evidence and use
-   `{baseDir}/scripts/scan_skill_opportunities.py`, but it must not patch
+   `a host-provided skill-opportunity scanner`, but it must not patch
    target skills.
    The response must include the full ranked list inline. Use compact columns
    if needed, but do not replace the full list with only top targets.
     When the operator charters a Control Room scan, use
-    `{baseDir}/scripts/control_room_skill_scan.py`: collect bounded usage
+    `an explicitly authorized host-provided fleet scanner`: collect bounded usage
     evidence, freeze
     the registry/path/hash baseline, scan in active-first registry order, emit
     one record per skill and a checkpoint after every ten active skills, then
@@ -272,11 +272,11 @@ skill.
   user-first, efficiency, and bloat passes by target type.
 - `references/trigger-tests.md` - representative trigger and near-miss cases.
 - `references/test-cases.md` - behavior examples for diagnosis and proceed.
-- `{baseDir}/scripts/scan_skill_opportunities.py` - deterministic helper for applying
+- `a host-provided skill-opportunity scanner` - deterministic helper for applying
   skill-target diagnosis checks across the skill inventory and ranking
   planning-only opportunities.
-- `{baseDir}/scripts/control_room_skill_scan.py` - resumable audit-only programme helper
+- `an explicitly authorized host-provided fleet scanner` - resumable audit-only programme helper
   for a frozen workspace-skill inventory, bounded recent-usage evidence,
   per-skill records, ten-active-skill checkpoints, and hash verification.
-- `../adam-pattern/references/pattern-profile.md` - bounded observed-pattern
+- `a host-provided bounded pattern profile, when available` - bounded observed-pattern
   evidence retrieval for target-specific improvement diagnosis.
